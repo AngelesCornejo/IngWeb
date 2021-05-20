@@ -71,15 +71,42 @@ app.post('/auth',async(req,res)=>{
   if(nombre && contrase){
     connection.query('SELECT * FROM usuarios WHERE nombre = ?',[nombre],async(error,results)=>{
       if(results.length == 0 || !(await bcrypt.compare(contrase,results[0].password))){
+        req.session.logueado=0;
         res.send('Usuario o password Incorrecto');
       }else{
+        req.session.logueado=1;
+        res.redirect("/Blog");
         res.send('Login correcto');
+        
       }
     });
   }
 });
 
+app.get('/Blog',(req,res)=>{
+  logueado=req.session.logueado;
+  if(logueado){
+  res.render('blog',{logueado});
+  }else{
+    res.redirect("/login");
+  }
+});
 
- app.listen(app.get('port'),()=>{
+
+// Define authentication middleware BEFORE your routes
+var authenticate = function (req, res, next) {
+  var isAuthenticated = true;
+  if (isAuthenticated) {
+    next();
+  }
+  else {
+    // redirect user to authentication page or throw error or whatever
+  }
+}
+
+
+
+
+app.listen(app.get('port'),()=>{
      console.log("Server running on :"+app.get('port'))
     });

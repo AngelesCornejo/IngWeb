@@ -71,4 +71,5 @@ insert into req_especiales(req) values ("Horno de gas"),("Horno de microondas"),
 
 insert into recetas(nb_imagen_receta, nomb_receta, descripcion,tiempo,nacionalidad,calorias,porcion_calorias,tipo_porcion) 
 values ("Pollo 1.png","Pollo asado","Un pollito bien asadito",15, "internacional",300,100,2),
-values ("MexEgg.png","MexicanEgg","Un huevo a la mexicana",15, "Mexico",650,1,1);
+ ("MexEgg.png","MexicanEgg","Un huevo a la mexicana",15, "Mexico",650,1,1);
+insert into req_rec values(4,1,0),(4,2,0);
