@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login y Registro</title>
-        <link href="../css/estilosForm.css" rel="stylesheet">
+        <link href="resources/css/estilosForm.css" rel="stylesheet">
     </head>
-<body>
+<body background="resources/images/fondo1.jpg">
     <main>
     <div class="contenedor_todo">
         <div class="caja_trasera">
@@ -22,10 +22,11 @@
             </div>
         </div>
          <div class="contenedor__login_register">
-             <form action=""  class="formulario__login">
+             <form action="/login" method="POST"  class="formulario__login">
                  <h2>Iniciar Sesión</h2>
-                 <input type="text" placeholder="Nombre" required pattern="[a-zA-Z]{3,8}">
+                 <input type="text" placeholder="Nombre">
                  <input type="password" placeholder="Contraseña" >
+                <!-- <input type="submit" name="Enviar"> -->
                  <button id="btn_entrar">Entrar</button>
              </form>
              <form action="" class="formulario__register">
@@ -39,6 +40,6 @@
          </div>
     </div>
     </main>
-    <script src="../js/script.js"></script>
+    <script src="resources/js/script.js"></script>
 </body>
 </html>
