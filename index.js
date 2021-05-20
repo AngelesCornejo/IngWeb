@@ -42,25 +42,54 @@ app.get('/register',(req,res)=>{
 });
 
 app.post('/register',async(req,res)=>{
+   if(req.session.registrado == 1){
+     res.redirect('login');
+   } else {
     const nombre = req.body.nombre;
     const email = req.body.email;
     const contrase = req.body.contrase;
+    const pass = req.body.pass;
     let passwordHaash = await bcrypt.hash(contrase,8);
+
+    if(contrase == pass){
     connection.query('INSERT INTO usuarios SET ?',{nombre:nombre,password:passwordHaash,email:email},async(error,results)=>{
       if(error){
-        console.log(error)
+       // console.log(error)
+        res.render('login',{
+          alert: true,
+          alertTitle: "Error",
+          alertMessage: "Usuario o correo ya existe",
+          alertIcon:'warning',
+          showConfirmButton: true,
+          timer: false,
+          ruta: 'login'   
+       });
       } else {
+        req.session.registrado = 1;
         res.render('login',{
           alert:true,
-          alertTitle:"Registration",
-          alertMessage:"Successfully!",
+          alertTitle:"Registro Completo",
+          alertMessage:"Inicia Sesión!",
           alertIcon:'success',
           showConfirmButton:false,
           timer:1500,
           ruta:''
-        })
+        })    
       }
     });
+  } else {
+    //res.send('Ingresar contraseñas iguales');
+    res.render('login',{
+      alert: true,
+      alertTitle: "Error",
+      alertMessage: "Ingrese contraseñas iguales",
+      alertIcon:'warning',
+      showConfirmButton: true,
+      timer: false,
+      ruta: 'login'   
+   });
+  }
+  }
 });
 
 app.post('/auth',async(req,res)=>{
@@ -71,7 +100,6 @@ app.post('/auth',async(req,res)=>{
   if(nombre && contrase){
     connection.query('SELECT * FROM usuarios WHERE nombre = ?',[nombre],async(error,results)=>{
       if(results.length == 0 || !(await bcrypt.compare(contrase,results[0].password))){
-<<<<<<< HEAD
        // res.send('Usuario o password Incorrecto');
        res.render('login',{
           alert: true,
@@ -83,6 +111,8 @@ app.post('/auth',async(req,res)=>{
           ruta: 'login'   
        });
       }else{
+        req.session.logueado=1;
+        res.redirect('Blog');
        // res.send('Login correcto');
        /*req.session.loggedIn = true;
        req.session.name =results[0].nombre;
@@ -95,19 +125,9 @@ app.post('/auth',async(req,res)=>{
         timer: 1500,
         ruta: ''   
      });*/
-     res.render('bienvenida');
+    // res.render('bienvenida');
   }
-=======
-        req.session.logueado=0;
-        res.send('Usuario o password Incorrecto');
-      }else{
-        req.session.logueado=1;
-        res.redirect("/Blog");
-        res.send('Login correcto');
-        
-      }
->>>>>>> 0f47fd15f89e334c188713d943f7f05547bf6f50
-    });
+});
   } else {
     //res.send('Ingrese usuario y password');
     res.render('login',{
