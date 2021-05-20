@@ -37,6 +37,27 @@ app.get('/', (req,res)=>{
   res.render("login");
 });
 
+app.post('/register',async(req,res)=>{
+    const nombre = req.body.nombre;
+    const email = req.body.email;
+    const contrase = req.body.contrase;
+    let passwordHaash = await bcryptjs.hash(contrase,8);
+    connection.query('INSERT INTO usuarios SET ?',{nombre:nombre,password:passwordHaash,email:email},async(error,results)=>{
+      if(error){
+        console.log(error)
+      } else {
+        res.render('login',{
+          alert:true,
+          alertTitle:"Registration",
+          alertMessage:"Successfully!",
+          alertIcon:'success',
+          showConfirmButton:false,
+          timer:1500,
+          ruta:''
+        })
+      }
+    });
+});
 
  app.listen(app.get('port'),()=>{
      console.log("Server running on :"+app.get('port'))

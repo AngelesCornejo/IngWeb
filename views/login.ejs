@@ -22,24 +22,39 @@
             </div>
         </div>
          <div class="contenedor__login_register">
-             <form action="/login" method="POST"  class="formulario__login">
+             <form action="auth" method="POST"  class="formulario__login">
                  <h2>Iniciar Sesión</h2>
                  <input type="text" placeholder="Nombre">
                  <input type="password" placeholder="Contraseña" >
-                <!-- <input type="submit" name="Enviar"> -->
-                 <button id="btn_entrar">Entrar</button>
+                <!-- <input type="submit" class="btn_entrar" name="Enviar"> -->
+                 <button id="btn_entrar">Entrar</button> 
              </form>
-             <form action="" class="formulario__register">
+             <form action="/register" method="POST" class="formulario__register">
                 <h2>Registrarse</h2>
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Correo electrónico">
-                <input type="password" placeholder="Contraseña">
-                <input type="password" placeholder="Confirmar Contraseña">
+                <input type="text" placeholder="Nombre" name="nombre" required>
+                <input type="text" placeholder="Correo electrónico" name="email" required>
+                <input type="password" placeholder="Contraseña" name="contrase" required>
+                <input type="password" placeholder="Confirmar Contraseña" required >
                 <button>Registrarse</button>
              </form>
          </div>
     </div>
     </main>
     <script src="resources/js/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title:'<%= alertTitle %>',
+                text:'<%= alertMessage %>',
+                icon:'<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer:<%= timer %>
+            }).then(()=>{
+                whindow.location='/ <%= ruta %>'
+            })
+        </script>
+    <% } %>
 </body>
 </html>
