@@ -1,0 +1,4 @@
+tipo_porcion int:es un entero cuyo significado es:
+1 por pieza
+2 por gramos
+3 por plato 
