@@ -66,7 +66,7 @@ app.post('/register',async(req,res)=>{
 app.post('/auth',async(req,res)=>{
   const nombre = req.body.nombre;
   const contrase = req.body.contrase;
-  let passwordHaash = await bcrypt.hash(contrase);
+  let passwordHaash = await bcrypt.hash(contrase,8);
   
   if(nombre && contrase){
     connection.query('SELECT * FROM usuarios WHERE nombre = ?',[nombre],async(error,results)=>{
