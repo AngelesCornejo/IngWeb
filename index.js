@@ -71,11 +71,44 @@ app.post('/auth',async(req,res)=>{
   if(nombre && contrase){
     connection.query('SELECT * FROM usuarios WHERE nombre = ?',[nombre],async(error,results)=>{
       if(results.length == 0 || !(await bcrypt.compare(contrase,results[0].password))){
-        res.send('Usuario o password Incorrecto');
+       // res.send('Usuario o password Incorrecto');
+       res.render('login',{
+          alert: true,
+          alertTitle: "Error",
+          alertMessage: "USUARIO y/o PASSWORD incorrectas",
+          alertIcon:'error',
+          showConfirmButton: true,
+          timer: false,
+          ruta: 'login'   
+       });
       }else{
-        res.send('Login correcto');
-      }
+       // res.send('Login correcto');
+       /*req.session.loggedIn = true;
+       req.session.name =results[0].nombre;
+       res.render('login',{
+        alert: true,
+        alertTitle: "Exitoso",
+        alertMessage: "LOGIN CORRECTO",
+        alertIcon:'success',
+        showConfirmButton: false,
+        timer: 1500,
+        ruta: ''   
+     });*/
+     res.render('bienvenida');
+  }
     });
+  } else {
+    //res.send('Ingrese usuario y password');
+    res.render('login',{
+      alert: true,
+      alertTitle: "Advertencia",
+      alertMessage: "Ingrese usuario y password",
+      alertIcon:'warning',
+      showConfirmButton: true,
+      timer: false,
+      ruta: 'login'   
+   });
+   res.end();
   }
 });
 
