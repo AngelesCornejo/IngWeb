@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,11 +22,10 @@
             </div>
         </div>
          <div class="contenedor__login_register">
-             <form action="auth" method="POST"  class="formulario__login">
+             <form action="/auth" method="POST"  class="formulario__login">
                  <h2>Iniciar Sesión</h2>
-                 <input type="text" placeholder="Nombre">
-                 <input type="password" placeholder="Contraseña" >
-                <!-- <input type="submit" class="btn_entrar" name="Enviar"> -->
+                 <input type="text" placeholder="Nombre" name="nombre" required>
+                 <input type="password" placeholder="Contraseña" name="contrase" required>
                  <button id="btn_entrar">Entrar</button> 
              </form>
              <form action="/register" method="POST" class="formulario__register">
@@ -52,7 +51,7 @@
                 showConfirmButton: <%= showConfirmButton %>,
                 timer:<%= timer %>
             }).then(()=>{
-                whindow.location='/ <%= ruta %>'
+                whindow.location='/<%= ruta %>'
             })
         </script>
     <% } %>
