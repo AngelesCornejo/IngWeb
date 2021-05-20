@@ -1,21 +1,31 @@
 const express = require('express');
 
 const app = express();
-const path = require('path');
 
-//let rootPath = path.normalize(__dirname + '/Public');
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+const dotenv = require('dotenv');
+dotenv.config({path:'./env/.env'});
+
+app.use('/resources',express.static('Public'));
+app.use('/resources',express.static(__dirname +'/Public'));
 
 app.set('view engine','ejs');
 
 app.set('port',process.env.PORT || 5000);
 
-app.use(express.urlencoded({extended: false}));
+const bcryptjs = require('bcryptjs');
 
-app.use('/resources',express.static('Public'));
-app.use('/resources',express.static(__dirname +'/Public'));
+const session = require('express-session');
 
-console.log(__dirname);
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
 
+const connection = require('./database/db');
 
 app.get('/', (req,res)=>{
   // res.sendFile(rootPath + '/views/bienvenida.html');
