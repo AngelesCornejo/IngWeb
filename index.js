@@ -164,7 +164,19 @@ var authenticate = function (req, res, next) {
   }
 }
 
-
+app.get('/json', function (req, res) {
+ 
+ 
+  connection.query('SELECT * FROM recetas', function(err, rows, fields)   
+  {  
+      connection.end();
+ 
+      if (err) throw err;  
+ 
+      res.json(rows); 
+ 
+  });
+});
 
 
 app.listen(app.get('port'),()=>{
