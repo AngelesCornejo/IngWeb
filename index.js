@@ -41,6 +41,10 @@ app.get('/register',(req,res)=>{
   res.render('login');
 });
 
+app.get('/receta',(req,res)=>{
+  res.render('receta');
+});
+
 app.post('/register',async(req,res)=>{
    if(req.session.registrado == 1){
      res.redirect('login');
