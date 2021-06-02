@@ -37,6 +37,9 @@ app.get('/', (req,res)=>{
   res.render("login");
 });
 
+
+
+
 app.get('/register',(req,res)=>{
   res.render('login');
 });
@@ -44,6 +47,10 @@ app.get('/register',(req,res)=>{
 app.get('/receta',(req,res)=>{
   res.render('receta');
 });
+
+/*app.get('/perfil',(req,res)=>{
+  res.render('perfil');
+});*/
 
 app.post('/register',async(req,res)=>{
    if(req.session.registrado == 1){
@@ -93,8 +100,39 @@ app.post('/register',async(req,res)=>{
       ruta: 'login'   
    });
   }
-  }
+ }
 });
+
+app.post('/AgregaDes',async (req, res)=>{
+  const descripcion = req.body.descripcion;
+  const name = req.session.name;
+  logueado=req.session.logueado;
+  /*console.log(name);*/
+    if(req.session.des == 1){
+      res.redirect('Perfil');
+    }else{
+     connection.query('UPDATE usuarios SET descripcion = ? WHERE nombre = ?',[descripcion,name],async(error,results)=>{
+    if (error){
+      console.log(error);
+    } else {
+      connection.query('SELECT descripcion FROM usuarios WHERE nombre = ?',[name],async(error,results)=>{
+        if (error){
+          console.log(error);
+        } else {
+          req.session.description = results[0].descripcion;
+          req.session.logueado=1;
+          logueado=req.session.logueado;
+          res.render('perfil',{
+          logueado:true,
+          name: req.session.name,
+          descripcion: req.session.description
+         })
+        }
+      }) 
+    }
+  });
+ }
+})
 
 app.post('/auth',async(req,res)=>{
   const nombre = req.body.nombre;
@@ -116,6 +154,7 @@ app.post('/auth',async(req,res)=>{
        });
       }else{
         req.session.logueado=1;
+        req.session.name = results[0].nombre;
         res.redirect('Blog');
        // res.send('Login correcto');
        /*req.session.loggedIn = true;
@@ -154,8 +193,33 @@ app.get('/Blog',(req,res)=>{
   }else{
     res.redirect("/login");
   }
+  res.end();
 });
 
+app.get('/Perfil',(req,res)=>{
+  logueado=req.session.logueado;
+  if(logueado){
+  req.session.des=0;
+  desAct=req.session.des;
+  res.render('perfil',{logueado:true,
+    name: req.session.name,
+    descripcion: req.session.description
+  });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.get('/Configuracion', (req,res)=>{
+  //res.sendFile(rootPath + '/views/login.html');
+  logueado=req.session.logueado;
+  if(logueado){
+  res.render('configuracion',{logueado:true
+  });
+  } else {
+    res.redirect("/login");
+  }
+});
 
 // Define authentication middleware BEFORE your routes
 var authenticate = function (req, res, next) {

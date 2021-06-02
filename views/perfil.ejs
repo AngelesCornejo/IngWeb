@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="resources/css/perfil.css">
+        <title>Perfil</title>
+    </head>
+    <body>
+        <div class="vertical-menu">
+            <a href="Perfil" class="active">Mi Cuenta</a>
+            <a href="Configuracion">Configuracion de Cuenta</a>
+            <a href="Salir">Cerrar Sesion</a>
+        </div> 
+        <div class="contenedor">
+            <h1>Perfil de Usuario</h1>
+            <form action="AgregaDes" method="POST">
+            <% if (logueado) { %>                
+                Usuario conectado: <strong><%= name %></strong>                   
+            <% } %>
+            <p><strong>Acerca de tu perfil</strong></p>
+            <textarea placeholder="Escribe un poco acerca de ti aquí..." name="descripcion"><%=descripcion%></textarea>
+            <button class="guardar_descripcion">Guardar</button>
+            </form>
+            <p><strong>Estrellas promedio</strong></p>
+            <p><strong>Numero de puntuaciones</strong></p>
+          </div>
+    </body>
+</html>
