@@ -168,14 +168,15 @@ var authenticate = function (req, res, next) {
   }
 }
 
-app.get('/json', function (req, res) {
- 
- 
-  connection.query('SELECT * FROM recetas', function(err, rows, fields)   
-  {  
-      connection.end();
- 
-      if (err) throw err;  
+app.get('/recetas/:id', function (req, res) {
+ const {id}=req.params
+  console.log('SELECT * FROM recetas where id_categoria='+id );
+  
+  connection.query('SELECT * FROM recetas where id_categoria='+id.replace(";"," ").replace("*"," ").replace("delete"," ").split(" ")[0], function(err, rows, fields)   
+  { 
+      if (err){
+        console.log("Listillo usando:"+id)
+      };  
  
       res.json(rows); 
  
