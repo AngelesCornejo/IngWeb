@@ -1,0 +1,73 @@
+*{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.vertical-menu {
+    width: 17em; /* Set a width if you like */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    font-size:12pt;
+    font-weight: bold;
+    border-radius: 20px;
+  }
+  
+  .vertical-menu a {
+    background-color: white; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 90px; /* Add some padding */
+    text-decoration:none; /* Remove underline from links */
+   /* border-radius: 20px;*/
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #d6d6b8; /* Dark grey background on mouse-over */
+    border-radius: 20px;
+  }
+  
+  .vertical-menu a.active {
+    text-decoration: underline black; /* Add a green color to the "active/current" link */
+    /*background-color: #bbbd63;*/
+    /*color: rgb(133, 90, 120);*/
+  }
+
+  .contenedor{
+      position: absolute;
+      top: 0px;
+      right: 0;
+      width: 66em;
+      height: 100%;
+      border:3px white ;
+  }
+
+  textarea{
+      border-radius: 20px;
+      border-style: solid;
+      font-weight:normal;
+      width: 500px;      
+      height:100px;
+      padding: 12px 20px;
+      resize: none;
+      box-sizing: border-box;
+      outline:none;
+  }
+
+  .guardar_descripcion{
+    border-radius: 10px;
+    width: 100px;
+    height:50px;
+    font-size: 14px;
+    align-content: center;
+    position: absolute;
+    top: 380px;
+    left: 400px;
+    outline:none;
+    border-style: solid;
+    padding: 0.5em 1.2em;
+  }
+
+  .guardar_descripcion:hover{
+    background-color:seashell;
+  }
