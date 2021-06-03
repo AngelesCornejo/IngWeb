@@ -259,6 +259,19 @@ app.get('/Blog',(req,res)=>{
   res.end();
 });
 
+app.get('/Salir',(req,res)=>{
+  logueado=req.session.logueado;
+  if(logueado){
+  req.session.destroy();
+  res.redirect("/Blog");
+  }else{
+    res.redirect("/login");
+  }
+  res.end();
+});
+
+
+
 app.get('/Perfil',(req,res)=>{
   logueado=req.session.logueado;
   if(logueado){
