@@ -38,7 +38,7 @@
     width: 66em;
     height: 100%;
     border:3px white ;
-    padding-bottom: 80px;
+    padding-bottom: 150px;
 }
 
 .botones_inferiores{
@@ -94,3 +94,18 @@
     background-color:white;
   }
 
+  .cambContraseña{
+    outline:none;
+    width:150px;
+    height:50px;
+    padding: 0.5em 1.2em;
+    border-radius: 10px;
+    border-style: solid;
+   /* position:absolute;
+    top:9cm;*/
+    background-color:white;
+  }
+
+  .cambContraseña:hover{
+    background-color:seashell;
+  }
