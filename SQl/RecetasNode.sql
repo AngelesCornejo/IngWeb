@@ -86,3 +86,6 @@ insert into recetas(nb_imagen_receta, nomb_receta, descripcion,tiempo,nacionalid
 values ("Pollo 1.png","Pollo asado","Un pollito bien asadito",15, "internacional",300,100,2,3),
  ("MexEgg.png","MexicanEgg","Un huevo a la mexicana",15, "Mexico",650,1,1,3);
 insert into req_rec values(4,1,0),(4,2,0);
+
+alter table usuarios add pais varchar(50);
+alter table usuarios add genero varchar(10);

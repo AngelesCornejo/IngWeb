@@ -128,7 +128,44 @@ app.post('/AgregaDes',async (req, res)=>{
           descripcion: req.session.description
          })
         }
-      }) 
+      })
+    }
+  });
+ }
+})
+
+app.post('/ConfigurarDatos',async(req, res)=>{
+  const name = req.body.name;
+  const correo = req.body.correo;
+  const pais = req.body.pais;
+  const genero = req.body.genero;
+  const ident = req.session.identifier;
+  logueado=req.session.logueado;
+  /*console.log(name);*/
+    if(req.session.des == 1){
+      res.redirect('Perfil');
+    }else{
+     connection.query('UPDATE usuarios SET nombre = ?, email = ?, pais=?, genero = ? WHERE id_user = ?',[name,correo,pais,genero,ident],async(error,results)=>{
+    if (error){
+      console.log(error);
+    } else {
+      connection.query('SELECT nombre,email,pais,genero FROM usuarios WHERE id_user = ?',[ident],async(error,results)=>{
+        if (error){
+          console.log(error);
+        } else {
+          req.session.name = results[0].nombre;
+          req.session.correo = results[0].email;
+          req.session.pais = results[0].pais;
+          req.session.logueado=1;
+          logueado=req.session.logueado;
+          res.render('configuracion',{
+          logueado:true,
+          name: req.session.name,
+          correo:req.session.correo,
+          pais:req.session.pais
+         })
+        }
+      })
     }
   });
  }
@@ -155,6 +192,10 @@ app.post('/auth',async(req,res)=>{
       }else{
         req.session.logueado=1;
         req.session.name = results[0].nombre;
+        req.session.description = results[0].descripcion;
+        req.session.correo = results[0].email;
+        req.session.identifier = results[0].id_user;
+        req.session.pais = results[0].pais;
         res.redirect('Blog');
        // res.send('Login correcto');
        /*req.session.loggedIn = true;
@@ -214,7 +255,10 @@ app.get('/Configuracion', (req,res)=>{
   //res.sendFile(rootPath + '/views/login.html');
   logueado=req.session.logueado;
   if(logueado){
-  res.render('configuracion',{logueado:true
+  res.render('configuracion',{logueado:true,
+    name: req.session.name,
+    correo: req.session.correo,
+    pais : req.session.pais,
   });
   } else {
     res.redirect("/login");

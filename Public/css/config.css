@@ -1,7 +1,5 @@
-*{
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
+
+
 .vertical-menu {
     width: 17em; /* Set a width if you like */
     height: 100%;
@@ -33,42 +31,66 @@
     /*color: rgb(133, 90, 120);*/
   }
 
-  .contenedor{
-      position: absolute;
-      top: 0px;
-      right: 0;
-      width: 66em;
-      height: 100%;
-      border:3px white ;
-  }
-
-  .descrip{
-      border-radius: 20px;
-      border-style: solid;
-      font-weight:normal;
-      width: 500px;      
-      height:100px;
-      padding: 12px 20px;
-      resize: none;
-      box-sizing: border-box;
-      outline:none;
-  }
-
-  .guardar_descripcion{
-    border-radius: 10px;
-    width: 100px;
-    height:50px;
-    font-size: 14px;
-    align-content: center;
+.contenedor{
     position: absolute;
-    top: 380px;
-    left: 400px;
+    top: 0px;
+    right: 0;
+    width: 66em;
+    height: 100%;
+    border:3px white ;
+    padding-bottom: 80px;
+}
+
+.botones_inferiores{
+    width: 100%; /* Set a width if you like */
+    height: 40px;
+    position: fixed;
+    /*top: 100%;*/
+    bottom: 0;
+    display: block;
+    left: 0;
+    border-top:gainsboro solid;
+   background-color:white;    
+   padding-bottom: 30px;
+
+  }
+
+  .guardar_conf{
+    border-radius: 10px;
+    font-size: 20pt;
+    position: absolute;
+    top: 10px;
+    left:750px;
     outline:none;
     border-style: solid;
+   padding: 0.5em 1.2em;
+   width: 150px;
+    height:50px;
+    font-size: 14px;
+    background-color: white;
+  }
+
+  .guardar_conf:hover{
+    background-color:seashell;
+  }
+
+  .datos{
+    border-radius: 20px;
+    border-style: solid;
+    font-weight:normal;
+    outline:none;
+    width:250px;
+    height:15px;
     padding: 0.5em 1.2em;
   }
 
-  .guardar_descripcion:hover{
-    background-color:seashell;
+  .paises{
+    width:250px;
+    height:40px;
+    padding: 0.5em 1.2em;
+    border-radius: 20px;
+    border-style: solid;
+    outline:none;
+    background-color:white;
   }
 
