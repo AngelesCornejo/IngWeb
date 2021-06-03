@@ -156,13 +156,34 @@ app.post('/ConfigurarDatos',async(req, res)=>{
           req.session.name = results[0].nombre;
           req.session.correo = results[0].email;
           req.session.pais = results[0].pais;
+          req.session.genero = results[0].genero;
           req.session.logueado=1;
           logueado=req.session.logueado;
+          if(req.session.genero=="male"){
+             chec="checked";
+             chec1="";
+             chec2="";
+          } else if(req.session.genero =="female"){
+             chec1="checked";
+             chec="";
+             chec2="";
+          } else if(req.session.genero =="other"){
+             chec2="checked";
+             chec="";
+             chec1="";
+          } else {
+            chec2="";
+             chec="";
+             chec1="";
+          }
           res.render('configuracion',{
           logueado:true,
           name: req.session.name,
           correo:req.session.correo,
-          pais:req.session.pais
+          pais:req.session.pais,
+          chec,
+          chec1,
+          chec2
          })
         }
       })
@@ -196,6 +217,7 @@ app.post('/auth',async(req,res)=>{
         req.session.correo = results[0].email;
         req.session.identifier = results[0].id_user;
         req.session.pais = results[0].pais;
+        req.session.genero = results[0].genero;
         res.redirect('Blog');
        // res.send('Login correcto');
        /*req.session.loggedIn = true;
@@ -255,10 +277,30 @@ app.get('/Configuracion', (req,res)=>{
   //res.sendFile(rootPath + '/views/login.html');
   logueado=req.session.logueado;
   if(logueado){
+    if(req.session.genero=="male"){
+       chec="checked";
+       chec1="";
+       chec2="";
+    } else if(req.session.genero =="female"){
+       chec1="checked";
+       chec="";
+       chec2="";
+    } else if(req.session.genero =="other"){
+       chec2="checker";
+       chec="";
+       chec1="";
+    }else {
+      chec2="";
+       chec="";
+       chec1="";
+    }
   res.render('configuracion',{logueado:true,
     name: req.session.name,
     correo: req.session.correo,
     pais : req.session.pais,
+    chec,
+    chec1,
+    chec2
   });
   } else {
     res.redirect("/login");
