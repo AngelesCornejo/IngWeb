@@ -9,6 +9,7 @@ password varchar(120),
 email varchar(25),
 estrellas_prom double(3,2),
 npuntuaciones int,
+descripcion varchar(100),
 primary key(id_user)
 );
 
