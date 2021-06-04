@@ -159,15 +159,15 @@ app.post('/ConfigurarDatos',async(req, res)=>{
           req.session.genero = results[0].genero;
           req.session.logueado=1;
           logueado=req.session.logueado;
-          if(req.session.genero=="male"){
+          if(req.session.genero=="Masculino"){
              chec="checked";
              chec1="";
              chec2="";
-          } else if(req.session.genero =="female"){
+          } else if(req.session.genero =="Femenino"){
              chec1="checked";
              chec="";
              chec2="";
-          } else if(req.session.genero =="other"){
+          } else if(req.session.genero =="Otro"){
              chec2="checked";
              chec="";
              chec1="";
@@ -290,15 +290,15 @@ app.get('/Configuracion', (req,res)=>{
   //res.sendFile(rootPath + '/views/login.html');
   logueado=req.session.logueado;
   if(logueado){
-    if(req.session.genero=="male"){
+    if(req.session.genero=="Masculino"){
        chec="checked";
        chec1="";
        chec2="";
-    } else if(req.session.genero =="female"){
+    } else if(req.session.genero =="Femenino"){
        chec1="checked";
        chec="";
        chec2="";
-    } else if(req.session.genero =="other"){
+    } else if(req.session.genero =="Otro"){
        chec2="checker";
        chec="";
        chec1="";
@@ -319,6 +319,40 @@ app.get('/Configuracion', (req,res)=>{
     res.redirect("/login");
   }
 });
+
+app.post('/CambContrase',async (req,res)=>{
+  const contrase1=req.body.cont1;
+  const contrase2=req.body.cont2;
+  const contrase3=req.body.cont3;
+  let passwordHaash = await bcrypt.hash(contrase1,8);
+  let passHaash = await bcrypt.hash(contrase2,8);
+  identifier = req.session.identifier;
+  if(contrase1 && contrase2 && contrase3){
+    connection.query('SELECT password FROM usuarios WHERE id_user=?',[identifier],async(error,results)=>{
+      if(results.length == 0 || !(await bcrypt.compare(contrase1,results[0].password))){
+        console.log(error);
+        res.redirect('/Perfil');
+      } else{
+        if(contrase2 == contrase3){
+          connection.query('UPDATE usuarios SET password = ? WHERE id_user =?',[passHaash,identifier],async(error,results)=>{
+           if(error){
+             console.log(error);
+           }else{
+            console.log("Cambio de contraseñas listo!");
+            res.redirect('/login');
+           }
+          })
+        }else {
+          console.log("Las contraseñas no coinciden");
+          res.redirect('/Perfil');
+        }
+      }
+    })
+  } else {
+    console.log("Llenar todos los campos");
+    res.redirect('/Perfil');
+  }
+})
 
 // Define authentication middleware BEFORE your routes
 var authenticate = function (req, res, next) {

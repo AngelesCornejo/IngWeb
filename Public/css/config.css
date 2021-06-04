@@ -18,6 +18,7 @@
     padding: 50px; /* Add some padding */
     text-decoration:none; /* Remove underline from links */
    /* border-radius: 20px;*/
+   cursor: pointer;
   }
   
   .vertical-menu a:hover {
@@ -68,6 +69,7 @@
     height:50px;
     font-size: 14px;
     background-color: white;
+    cursor:pointer;
   }
 
   .guardar_conf:hover{
@@ -82,6 +84,7 @@
     width:250px;
     height:15px;
     padding: 0.5em 1.2em;
+    resize:none;
   }
 
   .paises{
@@ -92,20 +95,74 @@
     border-style: solid;
     outline:none;
     background-color:white;
+    cursor:pointer;
   }
 
-  .cambContraseña{
+  .accordion{
     outline:none;
     width:150px;
     height:50px;
     padding: 0.5em 1.2em;
     border-radius: 10px;
     border-style: solid;
-   /* position:absolute;
-    top:9cm;*/
+    position:absolute;
+    top:8.8cm;
+    left:15.5cm;
+    cursor: pointer;
     background-color:white;
   }
 
-  .cambContraseña:hover{
-    background-color:seashell;background-color:seashell;
+  .accordion .accordion1 .nuevaCon:hover{
+    background-color:seashell;
   }
+
+.flotante{
+  position:absolute;
+  right:0;
+  top:2cm;
+  height:12cm;
+  width: 15cm;
+  border-radius: 15px;
+  display: none;
+  background-color:white;
+}
+
+.accordion1{
+  outline:none;
+  width:150px;
+  height:50px;
+  padding: 0.5em 1.2em;
+  border-radius: 10px;
+  border-style: solid;
+  position:absolute;
+  top:10cm;
+  left:4.5cm;
+  cursor: pointer;
+  background-color:white;
+}
+
+.nuevaCon{
+  outline:none;
+  width:150px;
+  height:50px;
+  padding: 0.5em 1.2em;
+  border-radius: 10px;
+  border-style: solid;
+  position:absolute;
+  top:10cm;
+  left:0;
+  cursor: pointer;
+  background-color:white;
+}
+
+.gen{
+  width: 20px;
+  height: 20px;
+  border:black;
+}
+
+.gen:checked{
+  background: black;
+}
+
+
