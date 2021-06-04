@@ -153,6 +153,7 @@ app.post('/ConfigurarDatos', async (req, res) => {
     if (req.session.des == 1) {
         res.redirect('Perfil');
     } else {
+<<<<<<< HEAD
         connection.query('UPDATE usuarios SET nombre = ?, email = ?, pais=?, genero = ? WHERE id_user = ?', [name, correo, pais, genero, ident], async (error, results) => {
             if (error) {
                 console.log(error);
@@ -197,6 +198,46 @@ app.post('/ConfigurarDatos', async (req, res) => {
                 })
             }
         });
+=======
+      connection.query('SELECT nombre,email,pais,genero FROM usuarios WHERE id_user = ?',[ident],async(error,results)=>{
+        if (error){
+          console.log(error);
+        } else {
+          req.session.name = results[0].nombre;
+          req.session.correo = results[0].email;
+          req.session.pais = results[0].pais;
+          req.session.genero = results[0].genero;
+          req.session.logueado=1;
+          logueado=req.session.logueado;
+          if(req.session.genero=="Masculino"){
+             chec="checked";
+             chec1="";
+             chec2="";
+          } else if(req.session.genero =="Femenino"){
+             chec1="checked";
+             chec="";
+             chec2="";
+          } else if(req.session.genero =="Otro"){
+             chec2="checked";
+             chec="";
+             chec1="";
+          } else {
+            chec2="";
+             chec="";
+             chec1="";
+          }
+          res.render('configuracion',{
+          logueado:true,
+          name: req.session.name,
+          correo:req.session.correo,
+          pais:req.session.pais,
+          chec,
+          chec1,
+          chec2
+         })
+        }
+      })
+>>>>>>> 3465c712da6d472de81342ef8ceef60aee412d47
     }
 })
 
@@ -318,6 +359,7 @@ app.get('/Perfil', (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 app.get('/Configuracion', (req, res) => {
     //res.sendFile(rootPath + '/views/login.html');
     logueado = req.session.logueado;
@@ -350,8 +392,64 @@ app.get('/Configuracion', (req, res) => {
         });
     } else {
         res.redirect("/login");
+=======
+app.get('/Configuracion', (req,res)=>{
+  //res.sendFile(rootPath + '/views/login.html');
+  logueado=req.session.logueado;
+  if(logueado){
+    if(req.session.genero=="Masculino"){
+       chec="checked";
+       chec1="";
+       chec2="";
+    } else if(req.session.genero =="Femenino"){
+       chec1="checked";
+       chec="";
+       chec2="";
+    } else if(req.session.genero =="Otro"){
+       chec2="checker";
+       chec="";
+       chec1="";
+    }else {
+      chec2="";
+       chec="";
+       chec1="";
+>>>>>>> 3465c712da6d472de81342ef8ceef60aee412d47
     }
 });
+
+app.post('/CambContrase',async (req,res)=>{
+  const contrase1=req.body.cont1;
+  const contrase2=req.body.cont2;
+  const contrase3=req.body.cont3;
+  let passwordHaash = await bcrypt.hash(contrase1,8);
+  let passHaash = await bcrypt.hash(contrase2,8);
+  identifier = req.session.identifier;
+  if(contrase1 && contrase2 && contrase3){
+    connection.query('SELECT password FROM usuarios WHERE id_user=?',[identifier],async(error,results)=>{
+      if(results.length == 0 || !(await bcrypt.compare(contrase1,results[0].password))){
+        console.log(error);
+        res.redirect('/Perfil');
+      } else{
+        if(contrase2 == contrase3){
+          connection.query('UPDATE usuarios SET password = ? WHERE id_user =?',[passHaash,identifier],async(error,results)=>{
+           if(error){
+             console.log(error);
+           }else{
+            console.log("Cambio de contraseñas listo!");
+            res.redirect('/login');
+           }
+          })
+        }else {
+          console.log("Las contraseñas no coinciden");
+          res.redirect('/Perfil');
+        }
+      }
+    })
+  } else {
+    console.log("Llenar todos los campos");
+    res.redirect('/Perfil');
+  }
+})
 
 // Define authentication middleware BEFORE your routes
 var authenticate = function(req, res, next) {
