@@ -153,7 +153,7 @@ app.post('/ConfigurarDatos', async (req, res) => {
     if (req.session.des == 1) {
         res.redirect('Perfil');
     } else {
-<<<<<<< HEAD
+
         connection.query('UPDATE usuarios SET nombre = ?, email = ?, pais=?, genero = ? WHERE id_user = ?', [name, correo, pais, genero, ident], async (error, results) => {
             if (error) {
                 console.log(error);
@@ -198,7 +198,7 @@ app.post('/ConfigurarDatos', async (req, res) => {
                 })
             }
         });
-=======
+
       connection.query('SELECT nombre,email,pais,genero FROM usuarios WHERE id_user = ?',[ident],async(error,results)=>{
         if (error){
           console.log(error);
@@ -237,7 +237,7 @@ app.post('/ConfigurarDatos', async (req, res) => {
          })
         }
       })
->>>>>>> 3465c712da6d472de81342ef8ceef60aee412d47
+
     }
 })
 
@@ -359,7 +359,7 @@ app.get('/Perfil', (req, res) => {
     }
 });
 
-<<<<<<< HEAD
+
 app.get('/Configuracion', (req, res) => {
     //res.sendFile(rootPath + '/views/login.html');
     logueado = req.session.logueado;
@@ -392,28 +392,6 @@ app.get('/Configuracion', (req, res) => {
         });
     } else {
         res.redirect("/login");
-=======
-app.get('/Configuracion', (req,res)=>{
-  //res.sendFile(rootPath + '/views/login.html');
-  logueado=req.session.logueado;
-  if(logueado){
-    if(req.session.genero=="Masculino"){
-       chec="checked";
-       chec1="";
-       chec2="";
-    } else if(req.session.genero =="Femenino"){
-       chec1="checked";
-       chec="";
-       chec2="";
-    } else if(req.session.genero =="Otro"){
-       chec2="checker";
-       chec="";
-       chec1="";
-    }else {
-      chec2="";
-       chec="";
-       chec1="";
->>>>>>> 3465c712da6d472de81342ef8ceef60aee412d47
     }
 });
 
