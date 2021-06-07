@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/agregar.css">
 <link rel="stylesheet" href="resources/css/material.css">
-<p><%categoria.forEach(element => console.log(element));%><p>
+
 <div class="page-container">
   <div class="page-content">
     <div class="content-wrapper">
@@ -53,9 +53,10 @@
           			       <label>Categoría</label>
           					        <select class="select" id="tip" name="tip">
           						        <optgroup label="Categoria">
-                                @foreach ($tp as $tp)
-                                    <option value="{{$tp->id}}">{{$tp->nom}}</option>
-                                @endforeach
+                                <%categoria.forEach(function(el){%>
+                                  <%console.log(el.id_categoria)%>
+                                  <option value= <%=el.id_categoria%>><%=el.categoria%></option>
+                                <%});%>
           						        </optgroup>
           					        </select>
           			  </div>

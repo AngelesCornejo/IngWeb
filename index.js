@@ -314,14 +314,16 @@ app.get('/agregaRec', (req, res) => {
     logueado = req.session.logueado;
 
     if (logueado) {
-     connection.query('SELECT * FROM categorias', function(err, rows, fields) {
+     connection.query('SELECT * FROM categorias;select * from req_especiales',[1,2], function(err, rows) {
         if (err) {
+            console.log(err)
             console.log("Listillo usando:")
         }
         else{
          res.render('agregar', {
             logueado: true,
-            categoria: rows
+            categoria: rows[0],
+            reqsp: rows[1]
         });
         };
         
