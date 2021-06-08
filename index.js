@@ -168,15 +168,15 @@ app.post('/ConfigurarDatos', async (req, res) => {
                         req.session.genero = results[0].genero;
                         req.session.logueado = 1; 
                         logueado = req.session.logueado;
-                        if (req.session.genero == "male") {
+                        if (req.session.genero == "Masculino") {
                             chec = "checked";
                             chec1 = "";
                             chec2 = "";
-                        } else if (req.session.genero == "female") {
+                        } else if (req.session.genero == "Femenino") {
                             chec1 = "checked";
                             chec = "";
                             chec2 = "";
-                        } else if (req.session.genero == "other") {
+                        } else if (req.session.genero == "Otro") {
                             chec2 = "checked";
                             chec = "";
                             chec1 = "";
@@ -198,45 +198,6 @@ app.post('/ConfigurarDatos', async (req, res) => {
                 })
             }
         });
-
-      connection.query('SELECT nombre,email,pais,genero FROM usuarios WHERE id_user = ?',[ident],async(error,results)=>{
-        if (error){
-          console.log(error);
-        } else {
-          req.session.name = results[0].nombre;
-          req.session.correo = results[0].email;
-          req.session.pais = results[0].pais;
-          req.session.genero = results[0].genero;
-          req.session.logueado=1;
-          logueado=req.session.logueado;
-          if(req.session.genero=="Masculino"){
-             chec="checked";
-             chec1="";
-             chec2="";
-          } else if(req.session.genero =="Femenino"){
-             chec1="checked";
-             chec="";
-             chec2="";
-          } else if(req.session.genero =="Otro"){
-             chec2="checked";
-             chec="";
-             chec1="";
-          } else {
-            chec2="";
-             chec="";
-             chec1="";
-          }
-          res.render('configuracion',{
-          logueado:true,
-          name: req.session.name,
-          correo:req.session.correo,
-          pais:req.session.pais,
-          chec,
-          chec1,
-          chec2
-         })
-        }
-      })
 
     }
 })
@@ -367,15 +328,15 @@ app.get('/Configuracion', (req, res) => {
     //res.sendFile(rootPath + '/views/login.html');
     logueado = req.session.logueado;
     if (logueado) {
-        if (req.session.genero == "male") {
+        if (req.session.genero == "Masculino") {
             chec = "checked";
             chec1 = "";
             chec2 = "";
-        } else if (req.session.genero == "female") {
+        } else if (req.session.genero == "Femenino") {
             chec1 = "checked";
             chec = "";
             chec2 = "";
-        } else if (req.session.genero == "other") {
+        } else if (req.session.genero == "Otro") {
             chec2 = "checker";
             chec = "";
             chec1 = "";
