@@ -1,0 +1,339 @@
+.tit{
+	font-family: 'Pacifico', cursive;
+}
+/* Card "¿Qué comeré hoy?*/"
+.demo-card-wide.mdl-card {
+  width: auto;
+}
+.demo-card-wide > .mdl-card__title {
+	font-family: 'Pacifico', cursive;
+  color: #fff;
+  height: 300px;
+  background: url('../images/bghealty.jpeg') center / cover #eeeded;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+/*Card Guisados*/
+.demo-card-square1.mdl-card {
+  width: auto;
+  height: 400px;
+}
+.demo-card-square1 > .mdl-card__title {
+  color: #fff;
+  background: url('../images/bgstew3.jpeg')center / cover #eeeded;
+}
+.demo-card-square1 > .mdl-card__actions{
+	text-align: right;
+}
+/*Card Bebidas*/
+.demo-card-square2.mdl-card {
+  width: auto;
+  height: 400px;
+}
+.demo-card-square2 > .mdl-card__title {
+  color: #fff;
+  background: url('../images/bgdrinks1.jpeg') center / cover #eeeded;
+}
+.demo-card-square2 > .mdl-card__actions{
+	text-align: right;
+}
+/*Card Postres*/
+.demo-card-square3.mdl-card {
+  width: auto;
+  height: 400px;
+}
+.demo-card-square3 > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../images/bgdessert.jpeg') center / cover #eeeded;
+}
+/* Card "Recetario*/"
+.demo-card-wide2.mdl-card {
+  width: auto;
+}
+.demo-card-wide2 > .mdl-card__title {
+	font-family: 'Pacifico', cursive;
+  color: #fff;
+  height: 300px;
+  background: url('../images/bgfood2.jpeg') center / cover #eeeded;
+}
+.demo-card-wide2 > .mdl-card__menu {
+  color: #fff;
+}
+/*Card Agregar Receta*/
+.demo-card-square4.mdl-card {
+  width: auto;
+  height: 400px;
+}
+.demo-card-square4 > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../images/bpizza.jpeg') center / cover #eeeded;
+		font-size: 35px;
+}
+/*Card Agregar Ingrediente*/
+.demo-card-square5.mdl-card {
+  width: auto;
+  height: 400px;
+}
+.demo-card-square5 > .mdl-card__title {
+  color: #fff;
+  background:
+    url('../images/fvegetables.jpeg') center / cover #eeeded;
+	font-size: 35px;
+}
+.t-card{
+	text-align: center;
+}
+.t-secc{
+	font-size: 90pt;
+	text-align: center;
+	color: #fff;
+}
+
+
+/*Receta*/
+.t-rc{
+	color: #FF4400;
+	text-align: center;
+}
+.sb-r{
+	color: #FF4400;
+}
+.ing{
+	font-size: 20px;
+}
+.ing-p{
+	font-size: 20px;
+	color: #000;
+	list-style-type: none;
+}
+.ing-c{
+	font-size: 20px;
+	list-style-type: none;
+
+}
+.des-ir{
+	font-size: 20px;
+	text-align: center;
+
+
+}
+.icon-forward{
+	font-size: 50px;
+	left: 70%;
+}
+.icon-reply{
+	font-size: 50px;
+}
+.d-im{
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.zoom-image{
+
+}
+.req{
+	font-size: 20px;
+	list-style-type: none;
+}
+.det-r{
+	font-size: 26px;
+}
+.md-p{
+	font-size: 18px;
+}
+.panel-rc{
+	background:
+		url('../images/bgknife.jpeg')  center / cover #eeeded;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+
+}
+.panel-ir{
+	background-color: rgba(255, 255, 255, 0.4);
+	border-radius: 2px solid #000;
+	padding-top: 0px;
+	padding-left: 10px;
+	border-bottom: 3px dashed #FF4400;
+	border-top: 3px dashed #FF4400;
+
+
+}
+.inf-r{
+	font-size: 18px;
+}
+
+/*Jumbotron Index */
+.jumbotron-ind{
+	color: #fff;
+  background:
+    url('../images/bgfood1.jpeg') center / cover #eeeded;
+		height: 600px;
+		width: auto;
+
+}
+.div-jt {
+	font-size: 90pt;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.tit-jt{
+	font-size: 90pt;
+	text-align: center;
+	color: #FF4400;
+
+    text-shadow:
+   -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+   -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+/* Inicio de sesión*/
+.bg-l {
+	background: url('../images/bgpinapple.jpeg') center / cover #eeeded;
+	background-attachment: fixed;
+
+}
+.panel-l{
+	background-color: rgba(238, 238, 238, 0.81);
+	border: 1px solid transparent;
+	border-radius: 3px;
+	color: #999;
+	font-size: 15px;
+
+}
+.a-l{
+	font-size: 15px;
+}
+.a-l:hover{
+	color: rgb(44, 180, 32);
+}
+.panel-l-body{
+	padding: 20px;
+	position: relative;
+}
+.tit-l{
+	color: #FF4400;
+	font-size: 90px;
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+}
+.navbar-default-l{
+	background-color: rgba(255, 255, 255, 0.30);
+    border-color: rgba(255, 255, 255, 0.30);
+}
+.navbar-header-l{
+	rgba(255, 255, 255, 0.15);
+}
+.al-nb{
+	color: #FFF;
+	font-size: 16px;
+
+}
+.al-nb:hover{
+	color: #FF4400;
+}
+/*Registro*/
+#select_inline{
+	display:inline-flex;
+	border-bottom-color: #FF4400;
+
+}
+.cal_rec{
+	width: 10%;
+}
+.porc{
+	width: 20%;
+}
+.tpo{
+	width: 50%;
+}
+.select{
+
+	border-bottom-color: #FF4400;
+
+}
+.outg{
+	color: #000;
+}
+
+.lbl-r{
+	color:  #FF4400;
+}
+/*Inicio de sesión admin*/
+.bg-la{
+	background: url('../images/bgtomato.jpeg')  #eeeded;
+	background-attachment: fixed;
+}
+/* Ingredientes*/
+.t-tbi{
+	text-align: center;
+	font-family: 'Pacifico', cursive;
+	color: #FF4400;
+	font-size: 20px;
+}
+.b-tbi{
+	text-align: center;
+	color: #000;
+}
+.panel-ig{
+	background: url('../images/bgpinapple2.jpeg') center / cover #eeeded;
+	background-attachment: fixed;
+}
+.nom-sug{
+	font-size: 30px;
+	font-family: 'Pacifico', cursive;
+	color: #FF4400;
+}
+
+/*Presupuesto*/
+.panel-ps{
+	background:
+		url('../images/bgboxchocolate.jpeg')  center / cover #eeeded;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+}
+.t-ps{
+	color: #FF830D;
+}
+.info{
+	background-color: rgba(225, 225, 225, 0.70);
+	color: #000;
+
+}
+.info-t{
+	font-size: 30px;
+	text-align: center;
+	color: #FFF;
+}
+.d-p{
+	color: #000;
+	text-align: center;
+	font-size: 25px;
+}
+.t-rc1{
+	color: #FFF;
+	text-align: center;
+}
+/*Lista de Compras*/
+.panel-lc{
+	background:
+		url('../images/bgbread1.jpeg')  center / cover #eeeded;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+}
+.t-lc{
+	font-size: 20px;
+	text-align: center;
+}
+.btn-lc{
+	text-align: right;
+}

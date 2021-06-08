@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/agregar.css">
+<link rel="stylesheet" href="resources/css/material.css">
+
+<div class="page-container">
+  <div class="page-content">
+    <div class="content-wrapper">
+      <div class="panel-lc panel-flat">
+        <div class="panel-lc-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="t-rc">Añadir receta</h1>
+              <form method="post" action="{{url('/SaveRec')}}" name="add_rec" enctype="multipart/form-data">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                  <div class="form-group col-lg-12" id="tt1">
+          			       <h4>Nombre</h4>
+          				     <input type="text" class="form-control" id="nom_rec" name="nom_rec" placeholder="Nombre del platillo" required pattern=".{5,50}">
+          			  </div>
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdlss-tooltip--large" for="tt1">
+  									Nombre del platillo. Mínimo 5 carácteres, máximo 50.
+  								</span>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4> Características </h4>
+                  </div>
+                  <div class=" form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt2">
+          			       <label>Tiempo</label>
+  						 <input type="numeric" class="tpo" id="tiempo_rec" name="timepo_rec" placeholder="Tiempo aproximado "> minutos
+          			  </div>
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdl-tooltip--large" for="tt2">
+  									Tiempo aproximado que tarda en elaborarse el platillo.
+  								</span>
+                  
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdl-tooltip--large" for="tt3">
+  									Dificultad de elaboración del platillo.
+  								</span>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt4">
+          			       <label>Categoría</label>
+          					        <select class="select" id="tip" name="tip">
+          						        <optgroup label="Categoria">
+                                <%categoria.forEach(function(el){%>
+                                  <option value= <%=el.id_categoria%>><%=el.categoria%></option>
+                                <%});%>
+          						        </optgroup>
+          					        </select>
+          			  </div>
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdl-tooltip--large" for="tt4">
+  									Categoría a la que pertenece el platillo.
+  								</span>
+                  <div class="form-group col-lg-5 col-md-5 col-sm-5 col-xs-5" id="tt5">
+                       <input type="numeric" class="cal_rec" id="cal_rec" name="cal_rec" placeholder="n">
+          			       <label>calorias por</label>
+                       <input type="numeric" class="porc" id="porc_rec" name="porc_rec" placeholder="">     
+                          <select class="select_inline" id="nac" name="nac">
+
+          						        <optgroup label="Nacionalidad"></optgroup>
+                               
+                                  <option value="1">Pieza(s)</option>
+                                  <option value="2">Gramos</option>
+                                  <option value="3">Plato</option>
+          						        </optgroup>
+          					        </select>
+          			  </div>
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdl-tooltip--large" for="tt5">
+  									Nacionalidad a la que pertenece el platillo.
+  								</span>
+                  <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt6">
+          			       <label>Requisitos</label>
+          					        <select class="select" id="req" name="req">
+          						        <optgroup label="Requisitos">
+                                <%reqsp.forEach(function(el){%>
+                                  <option value= <%=el.id_req%>><%=el.req%></option>
+                                <%});%>
+                  						</optgroup>
+          					        </select>
+          			  </div>
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdl-tooltip--large" for="tt6">
+  									Requisitos previos que se requiere para la elaboración.
+  								</span>
+
+                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tt7">
+                        <h4>Descripción</h4>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <textarea rows="3" cols="5" class="form-control" placeholder="Default textarea" id="des" name="des" pattern=".{30,255}"></textarea>
+                          </div>
+                  </div>
+                  <!--Tooltip-->
+                  <span class="mdl-tooltip mdl-tooltip--large" for="tt7">
+                    Breve descripción de la receta.
+                    Mínimo 30 carácteres, máximo 255.
+                  </span>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h4> Imagen </h4>
+                  </div>
+                  <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tt8">
+										<label class="control-label col-lg-4">Selecciona la imagen</label>
+										<div class="col-lg-8">
+											<input type="file" class="file-styled" id="img" name="img">
+										</div>
+									</div>
+                  <!--Tooltip-->
+  								<span class="mdl-tooltip mdl-tooltip--large" for="tt8">
+  									Imagen representativa de la receta.
+  								</span>
+
+                  <form class="form" method="post" name="ing" action="addInput()">
+                    <div class="form-group col-lg-12" id="clonpro">
+                      <h4>Ingredientes</h4>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt9">
+          								<label>Ingrediente</label><br>
+          									<select class="select-search" id="ing1" name="ing1">
+          										<optgroup label="Ingrediente" id="ing">
+                                <%ingdts.forEach(function(el){%>
+                                  <option value= <%=el.id_ingr%>><%=el.nomb_ing%></option>
+                                <%});%>
+        											</optgroup>
+                            </select>
+                      </div>
+                      <!--Tooltip-->
+      								<span class="mdl-tooltip mdl-tooltip--large" for="tt9">
+      									Nombre del ingrediente.
+      								</span>
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt10">
+                        <label>Cantidad</label>
+                        <input type="text"  class="form-control" placeholder="250" id="ct1" name="ct1" required></div>
+                        <!--Tooltip-->
+        								<span class="mdl-tooltip mdl-tooltip--large" for="tt10">
+        									Cantidad necesaria para la elaboración del platillo.
+        								</span>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="tt11">
+            								<label>Medida</label><br>
+            									<select class="select-search" id="med1" name="med1">
+            										<optgroup label="Medida" id="med">
+                                    <option value="1">Pieza(s)</option>
+                                    <option value="2">Gramos</option>
+                                    <option value="3">Cucharada(s)</option>
+          											</optgroup>
+                              </select>
+                        </div>
+                        <!--Tooltip-->
+        								<span class="mdl-tooltip mdl-tooltip--large" for="tt11">
+        									Proporción en la que se medirá la cantidad del ingrediente.
+        								</span>
+                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" ><br>
+                            <center>
+                            <button type="button" id="btn" class="btn btn-warning" onClick="addInput()">+</button></center>
+                          </div>
+
+
+          					</div>
+                    <div id="dinImp"></div>
+                  </form>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tt13">
+                      <h4>Procedimiento</h4>
+            					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            						<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="pas" name="pas" pattern=".{100,3000}"></textarea>
+            					</div>
+            				</div>
+                    <!--Tooltip-->
+    								<span class="mdl-tooltip mdl-tooltip--large" for="tt13">
+    									Pasos para la elaboración de la receta.
+                      Mínimo 100 carácteres, máximo 3000.
+    								</span>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tt14">
+                  <input type="hidden" id="num" name="num">
+                  <button type="submit" class=" mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Añadir</button>
+
+                </div>
+                <span class="mdl-tooltip mdl-tooltip--large" for="tt14">
+                  Añadir receta
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="resources/js/ing.js"></script>
+
+</html>
