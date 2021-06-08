@@ -91,6 +91,8 @@
 	text-align: center;
 	color: #fff;
 }
+
+
 /*Receta*/
 .t-rc{
 	color: #FF4400;
@@ -240,6 +242,20 @@
 	color: #FF4400;
 }
 /*Registro*/
+#select_inline{
+	display:inline-flex;
+	border-bottom-color: #FF4400;
+
+}
+.cal_rec{
+	width: 10%;
+}
+.porc{
+	width: 20%;
+}
+.tpo{
+	width: 50%;
+}
 .select{
 
 	border-bottom-color: #FF4400;
