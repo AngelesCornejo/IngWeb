@@ -331,6 +331,7 @@ app.post('/CambContrase',async (req,res)=>{
     connection.query('SELECT password FROM usuarios WHERE id_user=?',[identifier],async(error,results)=>{
       if(results.length == 0 || !(await bcrypt.compare(contrase1,results[0].password))){
         console.log(error);
+        
         res.redirect('/Perfil');
       } else{
         if(contrase2 == contrase3){
@@ -339,6 +340,7 @@ app.post('/CambContrase',async (req,res)=>{
              console.log(error);
            }else{
             console.log("Cambio de contraseñas listo!");
+            req.session.destroy();
             res.redirect('/login');
            }
           })
