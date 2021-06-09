@@ -228,7 +228,7 @@ app.post('/auth', async (req, res) => {
                 req.session.identifier = results[0].id_user;
                 req.session.pais = results[0].pais;
                 req.session.genero = results[0].genero;
-                res.redirect('Blog');
+                res.redirect('Blog/1');
                 // res.send('Login correcto');
                 /*req.session.loggedIn = true;
        req.session.name =results[0].nombre;
@@ -259,16 +259,43 @@ app.post('/auth', async (req, res) => {
     }
 });
 
-app.get('/Blog', (req, res) => {
-    logueado = req.session.logueado;
-    if (logueado) {
-        res.render('blog', {
-            logueado
-        });
-    } else {
-        res.redirect("/login");
+app.get('/Blog/:id', (req, res) => {
+    var {
+        id
+    } = req.params
+    if(id=null){
+    id=1
     }
-    res.end();
+    console.log(req.params)
+        logueado = req.session.logueado;
+            connection.query('SELECT * FROM categorias;select nb_imagen_receta,nomb_receta from recetas where id_categoria = '+req.params.id, function(err, rows) {
+            if (err) {
+                console.log(err)
+                console.log("Listillo usando:")
+            }
+            else{
+                console.log(rows[0]);
+                console.log(rows[1]);
+                res.render('blog', {
+                logueado: logueado,
+                categoria: rows[0],
+                recetas:rows[1]
+            });
+            }; 
+        });
+});
+app.get('/recetas/:id', function(req, res) {
+    const {
+        id
+    } = req.params
+    connection.query('SELECT * FROM recetas where id_categoria=' + id.replace(";", " ").replace("*", " ").replace("delete", " ").split(" ")[0], function(err, rows, fields) {
+        if (err) {
+            console.log("Listillo usando:" + id)
+        };
+
+        res.json(rows);
+
+    });
 });
 
 app.get('/agregaRec', (req, res) => {
@@ -364,7 +391,7 @@ app.get('/Salir', (req, res) => {
     logueado = req.session.logueado;
     if (logueado) {
         req.session.destroy();
-        res.redirect("/Blog");
+        res.redirect("/Blog/1");
     } else {
         res.redirect("/login");
     }
@@ -470,21 +497,7 @@ var authenticate = function(req, res, next) {
     }
 }
 
-app.get('/recetas/:id', function(req, res) {
-    const {
-        id
-    } = req.params
 
-
-    connection.query('SELECT * FROM recetas where id_categoria=' + id.replace(";", " ").replace("*", " ").replace("delete", " ").split(" ")[0], function(err, rows, fields) {
-        if (err) {
-            console.log("Listillo usando:" + id)
-        };
-
-        res.json(rows);
-
-    });
-});
 
 
 app.listen(app.get('port'), () => {

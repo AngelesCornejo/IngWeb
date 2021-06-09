@@ -1,3 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/estilos.css">
+    <link href="<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <ul class="nav">
+            <%if (logueado) {%>
+            <li><a href="../perfil">Perfil</a> 
+            <%}else{%>
+            <li><a href="../login">Inicio de sesión</a></li>
+            <%}%>
+            <li><a href="#">Recetas</a> 
+                <ul>
+                  <%categoria.forEach(function(el){%>
+                    <li><a href=<%=el.id_categoria%>><%=el.categoria%></a></li>
+                  <%});%>
+                    
+                </ul>
+            </li>
+            <li><a href="pagina.html">Inicio</a></li>
+        </ul>
+            
+
+
+        <section class="textos-header">
+            <h1>Daily food</h1>
+
+        </section>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C114.55,198.84 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);"></path></svg></div>
+    </header>
+    <main>
+        <section class="contenedor recetas">
+            <h1 class="titulo">Encuentra recetas para todos los gustos y compartenos tus creaciones</h1>
+            <div class="contenedor-recetas">
+                <img src="https://aguabela.com.mx/images/blog/recetas-comida-facil-menu-semanal-economico-blog.jpg" alt="imagen-recetas">
+                <div class="contenedor-texto">
+                    <h2><span>1</span>Las mejores recetas</h2>
+                    <p>La comunidad de daily food comparte sus recetas.</p>
+                    <h2><span>2</span>Compartenos tus propias creaciones</h2>
+                    <p>Todos nos sabemos una receta que nunca nos falla, que siempre es un éxito, compartela con la comunidad.</p>
+                </div>
+            </div>
+        </section>
+        <section class="galeria">
+            <div class="contenedor">
+                <h2 class="titulo">Últimas recetas</h2>
+                <div class="galeria-port">
+
+                  <%recetas.forEach(function(el){%>
+                    <div class="imagen-port">
+                      <img src=<%="../resources/img_rec/"+el.nb_imagen_receta%> alt="">
+                      <div class="hover-galeria">
+                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                          <p><%=el.nomb_receta%></p>
+                        </div>
+                    </div>                 
+                 
+                 
+                 
+                 
+                       <%});%>
+                    <div class="imagen-port">
+                        <img src="https://static.guiainfantil.com/media/9611/c/como-decorar-la-comida-de-los-ninos-md.jpg" alt="">
+                        <div class="hover-galeria">
+                            <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                            <p>Ver receta</p>
+                        </div>
+                    </div>
+
+                    <div class="imagen-port">
+                      <img src="https://saposyprincesas.elmundo.es/wp-content/uploads/2017/01/comida-india-langostinos-tandoori.jpg" alt="">
+                      <div class="hover-galeria">
+                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                          <p>Ver receta</p>
+                      </div>
+                  </div>
+
+                  <div class="imagen-port">
+                      <img src="https://cdn2.cocinadelirante.com/sites/default/files/images/2020/02/recetas-de-comida-saludable-y-economica.jpg" alt="">
+                      <div class="hover-galeria">
+                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                          <p>Ver receta</p>
+                      </div>
+                  </div>
+
+                  <div class="imagen-port">
+                      <img src="https://www.ecestaticos.com/image/clipping/1200/675/3db21f0346f8894c7f3682834c13f54a/por-que-la-comida-sabe-mas-dulce-cuando-tiene-forma-redonda.jpg" alt="">
+                      <div class="hover-galeria">
+                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                          <p>Ver receta</p>
+                      </div>
+                  </div>
+
+                  <div class="imagen-port">
+                    <img src="https://saposyprincesas.elmundo.es/wp-content/uploads/2017/01/comida-india-langostinos-tandoori.jpg" alt="">
+                    <div class="hover-galeria">
+                        <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                        <p>Ver receta</p>
+                    </div>
+                </div>
+
+                <div class="imagen-port">
+                    <img src="https://cdn2.cocinadelirante.com/sites/default/files/images/2020/02/recetas-de-comida-saludable-y-economica.jpg" alt="">
+                    <div class="hover-galeria">
+                        <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                        <p>Ver receta</p>
+                    </div>
+                </div>
+
+               
+                </div>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>
+
+
+
 
 <!-- Estilos del thumb-->
 <style type="/css">
@@ -15,268 +143,6 @@
   }
 </style>
 <!--Receta-->
-<div class="page-container-fluid">
-  <div class="page-content">
-    <div class="content-wrapper">
-      <div class="panel-rc panel-flat">
-        <div class="panel-rc-body">
-          <div class="row">
-
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <!--Titulo e iconos-->
-
-                <div class="col-lg-12 col-md-8 col-sm-8 col-xs-8">
-                  <center><h1 class="t-rc"></h1></center>
-                </div>
-
-              <!--Cuerpo receta-->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <div class="panel-flat">
-                      <div class="panel-body">
-                        <div class="thumbnail">
-                          <div class="thumb">
-                            <a alt="Convenciones" data-popup="lightbox">
-                              <img src="{{asset($receta->url)}}" alt="Convenciones">
-                              <span class="zoom-image">
-                                <div class="d-im">
-                                  <p class="des-ir"></p>
-                                </div>
-                              </span>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="inf-r">
-                          <center><div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <p class="det-r"><i  class="icon-alarm"></i></p>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <p class="det-r"><i class="icon-power2"></i></p>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <a href="Perfil">Perfil</a>
-                            <p class="det-r"><i class="icon-coin-dollar"></i> $150 </p>
-                          </div></center>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-7 col-md-7 col-sm-12 col-xs-12">
-                    <table class="table datatable-basic table-hover">
-                      <thead>
-                        <tr>
-                          <th class="col-lg-8 t-tbi">Ingrediente</th>
-                          <th class="col-lg-2 t-tbi">Cantidad</th>
-                          <th class="col-lg-2 t-tbi">Precio</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                            <td class="b-tbi"></td>
-                            <td class="b-tbi"></td>
-                            <td class="b-tbi"></td>
-                          </tr>
-                      </tbody>
-                    </table><br><br>
-                  </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    <h3 class="sb-r">Modo de Preparación</h3>
-                    <p class="md-p">
-                    </p>
-                    <!--Botones para el adm-->
-                    {{--}}<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-toggle="modal" data-target="#mod_rec"><i class="icon-pencil7"></i>Editar
-                    </a>
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="sweet_warning">
-                      <i class="icon-trash"></i>  Eliminar
-                    </a>{{--}}
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="panel-ir panel-flat">
-                      <div class="panel-ir-body">
-                        <center><h5 class="sb-r"><b>Categoría: <b></h5>
-                          <p class="inf-r"></p>
-                        <h5 class="sb-r"><b>Nacionalidad: <b></h5>
-                          <p class="inf-r"></p>
-                        <h5 class="sb-r"><b>Requisitos: <b></h5>
-                            <p class="inf-r"></p>
-                        <h5 class="sb-r"><b>Porciones: <b></h5>
-                          <p class="inf-r">8</p></center>
-                      </div>
-                    </div><br><br>
-                  </div>
-                </div>
-              </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Modificar Receta-->
-<div id="mod_rec" class="modal fade">
-  <div class="modal-dialog modal-full">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h5 class="modal-title">Modificar</h5>
-      </div>
-      <form method="post" action="" name="add_rec">
-      <div class="modal-body">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="form-group col-lg-12">
-               <h4>Nombre</h4>
-               <input type="text" class="form-control" placeholder="Ingrediente" value="Convenciones" required>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h4> Características </h4>
-          </div>
-          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-               <label>Tiempo</label>
-                   <select class="select">
-                     <optgroup label="Medida">
-                        <option value="1">15 min</option>
-                        <option value="2">30 min</option>
-                        <option value="2">45 min</option>
-                        <option value="2">1 hr</option>
-                        <option value="2">1 hr 15 min</option>
-                        <option value="2">1 hr 30 min</option>
-                        <option value="2">1 hr 45 min</option>
-                        <option value="2">2 hr</option>
-                        <option value="2">Más de 2 hr</option>
-                     </optgroup>
-                   </select>
-          </div>
-          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-               <label>Dificultad</label>
-                    <select class="select">
-                      <optgroup label="Dificultad">
-                        <option value="1">Fácil</option>
-                        <option value="2">Medio</option>
-                        <option value="3">Difícil</option>
-                      </optgroup>
-                    </select>
-          </div>
-          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-               <label>Categoría</label>
-                    <select class="select">
-                      <optgroup label="Dificultad">
-                        <option value="1">Pollo</option>
-                        <option value="2">Res</option>
-                        <option value="3">Mariscos</option>
-                      </optgroup>
-                    </select>
-          </div>
-          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-               <label>Nacionalidad</label>
-                    <select class="select">
-                      <optgroup label="Nacionalidad">
-                          <option value="1">China</option>
-                          <option value="2">Japonesa</option>
-                          <option value="3">Mexicana</option>
-                      </optgroup>
-                    </select>
-          </div>
-          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4">
-               <label>Requisitos</label>
-                    <select class="select">
-                      <optgroup label="Dificultad">
-                        <option value="1">Con Horno</option>
-                        <option value="2">Sin Horno</option>
-                      </optgroup>
-                    </select>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h4> Imagen </h4>
-          </div>
-          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <label class="control-label col-lg-4">Selecciona la imagen</label>
-            <div class="col-lg-8">
-              <input type="file" class="file-styled">
-            </div>
-          </div>
-          <form class="form" method="post" name="ing">
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <h4>Ingredientes</h4>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <table class="table datatable-basic table-hover">
-                <thead>
-                  <tr>
-                    <th class="col-lg-5 t-tbi">Ingrediente</th>
-                    <th class="col-lg-2 t-tbi">Cantidad</th>
-                    <th class="col-lg-2 t-tbi">Medida</th>
-                    <th class="col-lg-2 t-tbi">Precio</th>
-                    <th class="col-lg-1 t-tbi">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="b-tbi">Papa</td>
-                    <td class="b-tbi">2</td>
-                    <td class="b-tbi">Kg</td>
-                    <td class="b-tbi">$30</td>
-                    <td class="text-center">
-                      <a href=""><i class="icon-trash"></i> Eliminar</a>
-                    </td>
-
-                  </tr>
-                </tbody>
-              </table>
-              <br><br>
-            </div>
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-
-                  <label>Ingrediente</label><br>
-                    <select class="select-search">
-                      <optgroup label="Ingrediente">
-                        <option value="1">Papa</option>
-                        <option value="2">Zanahoria</option>
-                        <option value="3">Chicharo</option>
-                        <option value="4">Calabaza</option>
-                      </optgroup>
-                    </select>
-              </div>
-
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                <label>Cantidad</label>
-                <input type="number" class="form-control" placeholder="250" min="1" max="3000" maxlength="4" minlength="1" required>
-              </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <label>Medida</label><br>
-                      <select class="select-search">
-                        <optgroup label="Medida">
-                          <option value="1">Kg</option>
-                          <option value="2">Lt</option>
-                          <option value="3">Piezas</option>
-                          <option value="4">Cucharadas</option>
-                        </optgroup>
-                      </select>
-                </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><br>
-                    <button type="submit" class=" mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Añadir</button>
-                  </div>
-
-          </form>
-          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>Procedimiento</h4>
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <textarea rows="5" cols="5" class="form-control" placeholder="Default textarea"></textarea>
-                  </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-link" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <% if(typeof alert != "undefined") { %>
   <script>
