@@ -16,7 +16,7 @@
           <div class="row">
             <div class="col-lg-12">
               <h1 class="t-rc">Añadir receta</h1>
-              <form method="post" action="{{url('/SaveRec')}}" name="add_rec" enctype="multipart/form-data">
+              <form method="post" action="/saveRec" name="add_rec" enctype="multipart/form-data">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                   <div class="form-group col-lg-12" id="tt1">
@@ -32,8 +32,12 @@
                   </div>
                   <div class=" form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt2">
           			       <label>Tiempo</label>
-  						 <input type="numeric" class="tpo" id="tiempo_rec" name="timepo_rec" placeholder="Tiempo aproximado "> minutos
+  						 <input type="numeric" class="tpo" id="tiempo_rec" name="tiempo_rec" placeholder="Tiempo aproximado "> minutos
           			  </div>
+                  <div class=" form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt2">
+                    <label>Nacionalidad</label>
+            <input type="numeric"  id="nac_rec" name="nac_rec" placeholder="Pais de origen">
+               </div>
                   <!--Tooltip-->
   								<span class="mdl-tooltip mdl-tooltip--large" for="tt2">
   									Tiempo aproximado que tarda en elaborarse el platillo.
@@ -61,9 +65,9 @@
                        <input type="numeric" class="cal_rec" id="cal_rec" name="cal_rec" placeholder="n">
           			       <label>calorias por</label>
                        <input type="numeric" class="porc" id="porc_rec" name="porc_rec" placeholder="">     
-                          <select class="select_inline" id="nac" name="nac">
+                          <select class="select_inline" id="t_por" name="t_por">
 
-          						        <optgroup label="Nacionalidad"></optgroup>
+          						        <optgroup label="Tipo de Porcion"></optgroup>
                                
                                   <option value="1">Pieza(s)</option>
                                   <option value="2">Gramos</option>
@@ -76,7 +80,7 @@
   									Nacionalidad a la que pertenece el platillo.
   								</span>
                   <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt6">
-          			       <label>Requisitos</label>
+          			       <label>Requisito especial</label>
           					        <select class="select" id="req" name="req">
           						        <optgroup label="Requisitos">
                                 <%reqsp.forEach(function(el){%>

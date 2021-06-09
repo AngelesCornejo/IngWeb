@@ -1,7 +1,7 @@
 const express = require('express');
-
+const fileUpload = require('express-fileupload')
 const app = express();
-
+app.use(fileUpload())
 app.use(express.urlencoded({
     extended: false
 }));
@@ -290,6 +290,38 @@ app.get('/agregaRec', (req, res) => {
         };
         
     });
+    } else {
+        res.redirect("/login");
+    }
+});
+
+app.post('/saveRec', (req, res) => {
+    logueado = req.session.logueado;
+
+    if (logueado) {
+        let EDFile = req.files.img
+        console.log(EDFile)
+        EDFile.mv(`./Public/img_rec/${EDFile.md5}`,err => {
+    
+            if(err) return res.status(500).send({ message : err })
+    
+            connection.query('INSERT INTO recetas SET ?', {
+                nb_imagen_receta: EDFile.md5,
+                nomb_receta: req.body.nom_rec,
+                descripcion: req.body.des,
+                tiempo:req.body.tiempo_rec,
+                nacionalidad:req.body.nac_rec,
+                calorias:req.body.cal_rec,
+                porcion_calorias:req.body.porc_rec,
+                tipo_porcion:req.body.t_por,
+                id_categoria:req.body.tip
+            }, async (error, results) => {
+                console.log(error);
+    
+        })});
+        //insert into recetas(nb_imagen_receta, nomb_receta, descripcion,tiempo,nacionalidad,calorias,porcion_calorias,tipo_porcion,id_categoria) 
+//values ("Pollo 1.png","Pollo asado","Un pollito bien asadito",15, "internacional",300,100,2,3),
+
     } else {
         res.redirect("/login");
     }
