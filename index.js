@@ -260,42 +260,51 @@ app.post('/auth', async (req, res) => {
 });
 
 app.get('/Blog/:id', (req, res) => {
-    var {
-        id
-    } = req.params
+     var id= req.params
     if(id=null){
     id=1
     }
-    console.log(req.params)
         logueado = req.session.logueado;
-            connection.query('SELECT * FROM categorias;select nb_imagen_receta,nomb_receta from recetas where id_categoria = '+req.params.id, function(err, rows) {
+            connection.query('SELECT * FROM categorias;select id_receta, nb_imagen_receta,nomb_receta from recetas where id_categoria = '+req.params.id, function(err, rows) {
             if (err) {
                 console.log(err)
                 console.log("Listillo usando:")
             }
             else{
-                console.log(rows[0]);
-                console.log(rows[1]);
                 res.render('blog', {
                 logueado: logueado,
                 categoria: rows[0],
-                recetas:rows[1]
+                recetas: rows[1],
+                seleccionado:req.params
             });
             }; 
         });
 });
 app.get('/recetas/:id', function(req, res) {
-    const {
-        id
-    } = req.params
-    connection.query('SELECT * FROM recetas where id_categoria=' + id.replace(";", " ").replace("*", " ").replace("delete", " ").split(" ")[0], function(err, rows, fields) {
-        if (err) {
-            console.log("Listillo usando:" + id)
-        };
-
-        res.json(rows);
-
-    });
+    var id= req.params
+    if(id=null){
+    id=1
+    }
+    console.log(req.session.logueado);
+    if(req.session.logueado){
+        logueado = req.session.logueado;
+            connection.query('SELECT * FROM categorias;select * from recetas where id_receta = '+req.params.id+";select * from recetas_ing natural join ingredientes where id_receta="+req.params.id, function(err, rows) {
+            if (err) {
+                console.log(err)
+                console.log("Listillo usando:")
+            }
+            else{
+                res.render('vReceta', {
+                logueado: logueado,
+                categoria: rows[0],
+                receta:rows[1],
+                ingredientes:rows[2]
+            });
+            }; 
+        });
+    }else{
+    res.redirect("/login");
+    }
 });
 
 app.get('/agregaRec', (req, res) => {
@@ -343,38 +352,36 @@ app.post('/saveRec', (req, res) => {
                 tipo_porcion:req.body.t_por,
                 id_categoria:req.body.tip
             }, async (error, results) => {
-                //console.log(error);
-                console.log(results);
+                //console.log(error)
                 var inse="insert into recetas_ing values("
                 var i=req.body.num-1;
                 for (i = 1; i <= req.body.num; i++) {
-                    inse+=results.insertId+","+req.body['ing'+i]+","+req.body['ct'+i]+","+req.body['med'+i]+")("
+                    inse+=results.insertId+","+req.body['ing'+i]+","+req.body['ct'+i]+","+req.body['med'+i]+"),("
                 } 
-                inse=inse.substring(0,inse.length-1)
-                console.log(inse);
+                inse=inse.substring(0,inse.length-2)
 
                 connection.query(inse,async (error, results) => {
                     
                     if (error){
                         console.log(error)
-                        res.render('blog', {
+                        res.render('error',{
                             alert: true,
                             alertTitle: "Error",
                             alertMessage: "Ocurrio un error en este momento, intente de nuevo",
                             alertIcon: 'warning',
                             showConfirmButton: true,
                             timer: false,
-                            ruta: 'blog'
+                            ruta: '/Blog/1'
                         });
                     }else{
-                        res.render('blog', {
+                        res.render('error',{
                             alert: true,
                             alertTitle: "Publicado",
                             alertMessage: "Publicado con éxito",
                             alertIcon: 'success',
                             showConfirmButton: false,
                             timer: 1000,
-                            ruta: 'blog'
+                            ruta: '/Blog/1'
                         });
                     }
             })

@@ -20,7 +20,8 @@ categoria varchar(20) not null
 );
 
 
-create table ingredientes(id_ingr int NOT NULL AUTO_INCREMENT,
+create table ingredientes(
+id_ingr int NOT NULL AUTO_INCREMENT,
 nomb_ing varchar(25),
 id_categoria int not null,
 primary key(id_ingr),

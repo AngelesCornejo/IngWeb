@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%receta=receta[0]%>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/estiloreceta.css">
+    <link href="<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        header{
+    
+        background-image: url(<%="../resources/img_rec/"+ receta.nb_imagen_receta%>) !important;
+        
+        }
+      </style>
+    <header>
+        
+        <ul class="nav">
+        <%if (logueado) {%>
+        <li><a href="../perfil">Perfil</a> 
+        <%}else{%>
+        <li><a href="../login">Inicio de sesión</a></li>
+        <%}%>
+        <li><a href="#">Recetas</a> 
+            <ul>
+              <%categoria.forEach(function(el){%>
+                <li><a href=<%=el.id_categoria%>><%=el.categoria%></a></li>
+              <%});%>
+                
+            </ul>
+        </li>
+        <li><a href="pagina.html">Inicio</a></li>
+    </ul>
+            
+
+
+        <section class="textos-header">
+            <h1><%=receta.nomb_receta%></h1>
+
+        </section>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C114.55,198.84 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);"></path></svg></div>
+    </header>
+    <main>
+        <section class="contenedor recetas">
+            <h1 class="titulo">Ingredientes</h1>
+            <div class="contenedor-recetas">
+                <div class="contenedor-texto">
+                    <%console.log(ingredientes)%>
+                    <%ingredientes.forEach(function(el){%>
+                        <p><%=el.cantidad+" "+el.nomb_ing%><p>
+                      <%});%>
+                </div>
+            </div>
+
+            <h2 class="titulo">Elaboración</h2>
+            <div class="contenedor-recetas">
+                <div class="contenedor-texto">
+                    <h2><span>1</span>Mezcla</h2>
+                    <p>En un bowl grande incorpora la carne, el huevo, el pan rallado, el ajo, perrejil, sal y pimienta. Deja reposar unos 10 minutos.</p>
+                    <h2><span>2</span>Forma bolitas</h2>
+                    <p>Con la mezcla haz pequeñas bolitas, pásalas harina y fríe a fuego medio hasta que queden doradas.</p>
+                    <h2><span>3</span>A decorar</h2>
+                    <p>Pon a volar tu imaginación y con lo que tengas a mano, decora, puedes usar pasta cocida, algunas verduras, etc.</p>
+                    <h2><span>4</span>Listo</h2>
+                    <p>Sirve y disfruta.</p>
+                </div>
+            </div>
+
+        </section>
+ 
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+...
+
+<!-- Estilos del thumb-->
+<style type="/css">
+    .thumbnail-r{
+      display: block;
+      padding: 3px;
+      margin-bottom: 20px;
+      line-height: 0;
+      border: 0px;
+      background-color: #000;
+      border-radius: 5px;
+    }
+    .thumbnail-r > img{
+      width: 100%;
+    }
+  </style>
+  <!--Receta-->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if(typeof alert != "undefined") { %>
+    <script>
+        Swal.fire({
+            title:'<%= alertTitle %>',
+            text:'<%= alertMessage %>',
+            icon:'<%= alertIcon %>',
+            showConfirmButton: <%= showConfirmButton %>,
+            timer:<%= timer %>
+        }).then(()=>{
+            window.location.href="<%=ruta%>"
+        })
+    </script>
+  <% } %>

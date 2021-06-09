@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <ul class="nav">
             <%if (logueado) {%>
@@ -31,7 +32,11 @@
 
 
         <section class="textos-header">
-            <h1>Daily food</h1>
+          <%categoria.forEach(function(el){%>
+            <%if(el.id_categoria==seleccionado.id){%>
+            <h1><%=el.categoria%></h1>
+            <%}});%>
+            
 
         </section>
         <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C114.55,198.84 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);"></path></svg></div>
@@ -58,7 +63,7 @@
                     <div class="imagen-port">
                       <img src=<%="../resources/img_rec/"+el.nb_imagen_receta%> alt="">
                       <div class="hover-galeria">
-                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
+                          <a href=<%="../recetas/" + el.id_receta %> ><img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="" >
                           <p><%=el.nomb_receta%></p>
                         </div>
                     </div>                 
@@ -66,55 +71,8 @@
                  
                  
                  
-                       <%});%>
-                    <div class="imagen-port">
-                        <img src="https://static.guiainfantil.com/media/9611/c/como-decorar-la-comida-de-los-ninos-md.jpg" alt="">
-                        <div class="hover-galeria">
-                            <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
-                            <p>Ver receta</p>
-                        </div>
-                    </div>
-
-                    <div class="imagen-port">
-                      <img src="https://saposyprincesas.elmundo.es/wp-content/uploads/2017/01/comida-india-langostinos-tandoori.jpg" alt="">
-                      <div class="hover-galeria">
-                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
-                          <p>Ver receta</p>
-                      </div>
-                  </div>
-
-                  <div class="imagen-port">
-                      <img src="https://cdn2.cocinadelirante.com/sites/default/files/images/2020/02/recetas-de-comida-saludable-y-economica.jpg" alt="">
-                      <div class="hover-galeria">
-                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
-                          <p>Ver receta</p>
-                      </div>
-                  </div>
-
-                  <div class="imagen-port">
-                      <img src="https://www.ecestaticos.com/image/clipping/1200/675/3db21f0346f8894c7f3682834c13f54a/por-que-la-comida-sabe-mas-dulce-cuando-tiene-forma-redonda.jpg" alt="">
-                      <div class="hover-galeria">
-                          <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
-                          <p>Ver receta</p>
-                      </div>
-                  </div>
-
-                  <div class="imagen-port">
-                    <img src="https://saposyprincesas.elmundo.es/wp-content/uploads/2017/01/comida-india-langostinos-tandoori.jpg" alt="">
-                    <div class="hover-galeria">
-                        <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
-                        <p>Ver receta</p>
-                    </div>
-                </div>
-
-                <div class="imagen-port">
-                    <img src="https://cdn2.cocinadelirante.com/sites/default/files/images/2020/02/recetas-de-comida-saludable-y-economica.jpg" alt="">
-                    <div class="hover-galeria">
-                        <img src="https://w7.pngwing.com/pngs/569/281/png-transparent-computer-mouse-pay-per-click-computer-icons-advertising-computer-mouse-blue-electronics-search-engine-optimization.png" alt="">
-                        <p>Ver receta</p>
-                    </div>
-                </div>
-
+                  <%});%>
+                    
                
                 </div>
             </div>

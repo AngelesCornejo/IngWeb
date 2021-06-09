@@ -2,3 +2,9 @@ tipo_porcion int:es un entero cuyo significado es:
 1 por pieza
 2 por gramos
 3 por plato 
+
+t_cantidad
+1 pieza
+2 gramos
+3 cucharadas
+4
