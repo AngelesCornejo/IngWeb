@@ -51,4 +51,5 @@ function remInp(c_id){
 	$("#m"+a).remove();
 	$("#d"+a).remove();
 	nid = nid - 1;
+  document.getElementById("num").value = nid;
 }

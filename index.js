@@ -300,7 +300,7 @@ app.post('/saveRec', (req, res) => {
 
     if (logueado) {
         let EDFile = req.files.img
-        console.log(EDFile)
+        //console.log(EDFile)
         EDFile.mv(`./Public/img_rec/${EDFile.md5}`,err => {
     
             if(err) return res.status(500).send({ message : err })
@@ -316,11 +316,44 @@ app.post('/saveRec', (req, res) => {
                 tipo_porcion:req.body.t_por,
                 id_categoria:req.body.tip
             }, async (error, results) => {
-                console.log(error);
+                //console.log(error);
+                console.log(results);
+                var inse="insert into recetas_ing values("
+                var i=req.body.num-1;
+                for (i = 1; i <= req.body.num; i++) {
+                    inse+=results.insertId+","+req.body['ing'+i]+","+req.body['ct'+i]+","+req.body['med'+i]+")("
+                } 
+                inse=inse.substring(0,inse.length-1)
+                console.log(inse);
+
+                connection.query(inse,async (error, results) => {
+                    
+                    if (error){
+                        console.log(error)
+                        res.render('blog', {
+                            alert: true,
+                            alertTitle: "Error",
+                            alertMessage: "Ocurrio un error en este momento, intente de nuevo",
+                            alertIcon: 'warning',
+                            showConfirmButton: true,
+                            timer: false,
+                            ruta: 'blog'
+                        });
+                    }else{
+                        res.render('blog', {
+                            alert: true,
+                            alertTitle: "Publicado",
+                            alertMessage: "Publicado con éxito",
+                            alertIcon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000,
+                            ruta: 'blog'
+                        });
+                    }
+            })
+        })
     
-        })});
-        //insert into recetas(nb_imagen_receta, nomb_receta, descripcion,tiempo,nacionalidad,calorias,porcion_calorias,tipo_porcion,id_categoria) 
-//values ("Pollo 1.png","Pollo asado","Un pollito bien asadito",15, "internacional",300,100,2,3),
+    });
 
     } else {
         res.redirect("/login");
