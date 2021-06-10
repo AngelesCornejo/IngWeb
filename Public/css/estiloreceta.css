@@ -186,3 +186,78 @@ header .textos-header{
 .imagen-port:hover .hover-galeria{
     transform: scale(1);
 }
+
+/*Estrellas*/
+.wrapper{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    height: 2cm;
+    border: none;
+  }
+  
+  
+  #form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+  }
+  
+  #form p {
+    text-align: center;
+  }
+  
+  #form label {
+    font-size: 20px;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  .lab5 {
+    color: grey;
+    font-size: 1cm;
+    position: absolute;
+    left: 0.5cm;
+  }
+  .lab4 {
+    color: grey;
+    font-size: 1cm;
+    position: absolute;
+    left: 1.5cm;
+  }
+  .lab3 {
+    color: grey;
+    font-size: 1cm;
+    position: absolute;
+    left: 2.5cm;
+  }
+  .lab2 {
+    color: grey;
+    font-size: 1cm;
+    position: absolute;
+    left: 3.5cm;
+  }
+  .lab1 {
+    color: grey;
+    font-size: 1cm;
+    position: absolute;
+    left: 4.5cm;
+  }
+  
+  .clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  label:hover,
+  label:hover ~ label {
+    color: orange;
+  }
+  
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }
+  
+ 
