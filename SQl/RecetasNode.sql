@@ -91,3 +91,4 @@ insert into req_rec values(4,1,0),(4,2,0);
 
 alter table usuarios add pais varchar(50);
 alter table usuarios add genero varchar(10);
+alter table recetas add procedimiento varchar(500);

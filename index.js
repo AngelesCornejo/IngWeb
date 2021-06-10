@@ -354,6 +354,7 @@ app.post('/saveRec', (req, res) => {
                 tipo_porcion:req.body.t_por,
                 id_categoria:req.body.tip
             }, async (error, results) => {
+                if (error)console.log(error);
                 //console.log(error)
                 var inse="insert into recetas_ing values("
                 var i=req.body.num-1;
