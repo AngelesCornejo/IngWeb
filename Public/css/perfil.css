@@ -1,7 +1,7 @@
-*{
+/**{
     padding-top: 20px;
     padding-bottom: 20px;
-}
+}*/
 .vertical-menu {
     width: 17em; /* Set a width if you like */
     height: 100%;
@@ -61,14 +61,25 @@
     font-size: 14px;
     align-content: center;
     position: absolute;
-    top: 380px;
-    left: 400px;
+    top: 205px;
+    left: 510px;
     outline:none;
     border-style: solid;
     padding: 0.5em 1.2em;
   }
 
+  
   .guardar_descripcion:hover{
     background-color:seashell;
   }
 
+.num_punt{
+  border-radius: 20px;
+  border-style: solid;
+  font-weight:normal;
+  outline:none;
+  width:250px;
+  height:15px;
+  padding: 0.5em 1.2em;
+  resize:none;
+}
