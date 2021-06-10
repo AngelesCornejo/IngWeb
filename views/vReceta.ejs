@@ -49,7 +49,12 @@
     </header>
     <main>
         <section class="contenedor recetas">
-            
+          <div class="contenedor-recetas">
+              <div class="contenedor-texto">
+                      <h4 color="gray"><%=receta.descripcion%><h4>
+              </div>
+          </div>
+          <br>
             <h1 class="titulo">Ingredientes</h1>
             <div class="contenedor-recetas">
                 <div class="contenedor-texto">
@@ -65,7 +70,7 @@
                 <div class="contenedor-texto">
                      <%
                      var i=1;
-                     receta.descripcion.split("\n").forEach(function(el){%>
+                     receta.procedimiento.split("\n").forEach(function(el){%>
                       <%if(el.startsWith("*")){%>  
                       <h2><span><%=i%></span><%=el.substring(1,el.lenght)%></h2>              
                       <%i++;}else{%>

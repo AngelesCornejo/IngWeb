@@ -108,7 +108,9 @@ header .textos-header{
     width: 48%;
 
 }
-
+h4{
+    color:rgb(77, 75, 75);
+}
 .contenedor-texto h2{
     margin-bottom: 15px;
 

@@ -352,7 +352,8 @@ app.post('/saveRec', (req, res) => {
                 calorias:req.body.cal_rec,
                 porcion_calorias:req.body.porc_rec,
                 tipo_porcion:req.body.t_por,
-                id_categoria:req.body.tip
+                id_categoria:req.body.tip,
+                procedimiento: req.body.pas
             }, async (error, results) => {
                 if (error)console.log(error);
                 //console.log(error)
