@@ -228,6 +228,8 @@ app.post('/auth', async (req, res) => {
                 req.session.identifier = results[0].id_user;
                 req.session.pais = results[0].pais;
                 req.session.genero = results[0].genero;
+                req.session.estrellas = results[0].estrellas_prom;
+                req.session.npuntua = results[0].npuntuaciones;
                 res.redirect('Blog/1');
                 // res.send('Login correcto');
                 /*req.session.loggedIn = true;
@@ -415,7 +417,10 @@ app.get('/Perfil', (req, res) => {
         res.render('perfil', {
             logueado: true,
             name: req.session.name,
-            descripcion: req.session.description
+            descripcion: req.session.description,
+            estrellas : req.session.estrellas,
+            npuntua : req.session.npuntua
+
         });
     } else {
         res.redirect("/login");

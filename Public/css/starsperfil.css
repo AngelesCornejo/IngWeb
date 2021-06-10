@@ -15,14 +15,7 @@
     font-size:  1cm;
     border-color: black;
     }
-    .wrapper{
-    color: green;
-    /*width: var(--width);*/
-    position: absolute;
-    white-space: nowrap;
-    overflow: hidden;
-    width:10%;
-    }
+
     .wrapper1{
        position: relative;
         left: 0;

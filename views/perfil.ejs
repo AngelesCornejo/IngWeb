@@ -41,6 +41,17 @@
                     --><label for="radio5">★</label>
                   </p>
                 </form>
+                <style>
+                      .wrapper{
+                      color: green;
+                      /*width: var(--width);*/
+                      position: absolute;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      width: <%=(estrellas*20)%>% !important;
+                      <%console.log((estrellas*20))%>
+                      }
+                </style>
                 <div class="wrapper" id="wrapper">
                     <form >
                       <p class="clasificacion">
@@ -59,7 +70,7 @@
               </div>
               </div>
             <h3>Numero de puntuaciones</h3>
-            <textarea class="num_punt" name="puntuaciones" readonly></textarea>
+            <textarea class="num_punt" name="puntuaciones"readonly><%=npuntua%></textarea>
           </div>
     </body>
 </html>
