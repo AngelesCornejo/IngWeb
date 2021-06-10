@@ -2,6 +2,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }*/
+@media screen and (min-width: 1068px) {
 .vertical-menu {
     width: 17em; /* Set a width if you like */
     height: 100%;
@@ -34,9 +35,9 @@
   }
 
   .contenedor{
-      position: absolute;
+      position: relative;
       top: 0px;
-      right: 0;
+      left: 8cm;
       width: 66em;
       height: 100%;
       border:3px white ;
@@ -61,8 +62,8 @@
     font-size: 14px;
     align-content: center;
     position: absolute;
-    top: 205px;
-    left: 510px;
+    top: 4.8cm;
+    left: 13.5cm;
     outline:none;
     border-style: solid;
     padding: 0.5em 1.2em;
@@ -83,3 +84,88 @@
   padding: 0.5em 1.2em;
   resize:none;
 }
+}
+
+@media screen and (max-width: 1067px) {
+  .vertical-menu {
+      width: 17em; /* Set a width if you like */
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      font-size:12pt;
+      font-weight: bold;
+      border-radius: 20px;
+    }
+    
+    .vertical-menu a {
+      background-color: white; /* Grey background color */
+      color: black; /* Black text color */
+      display: block; /* Make the links appear below each other */
+      padding: 50px; /* Add some padding */
+      text-decoration:none; /* Remove underline from links */
+     /* border-radius: 20px;*/
+    }
+    
+    .vertical-menu a:hover {
+      background-color: #d6d6b8; /* Dark grey background on mouse-over */
+      border-radius: 20px;
+    }
+    
+    .vertical-menu a.active {
+      text-decoration: underline black; /* Add a green color to the "active/current" link */
+      /*background-color: #bbbd63;*/
+      /*color: rgb(133, 90, 120);*/
+    }
+  
+    .contenedor{
+        position: relative;
+        top: 0px;
+        left: 8cm;
+        width: 66em;
+        height: 100%;
+        border:3px white ;
+    }
+  
+    .descrip{
+        border-radius: 20px;
+        border-style: solid;
+        font-weight:normal;
+        width: 300px;      
+        height:200px;
+        padding: 12px 20px;
+        resize: none;
+        box-sizing: border-box;
+        outline:none;
+    }
+  
+    .guardar_descripcion{
+      border-radius: 10px;
+      width: 100px;
+      height:50px;
+      font-size: 14px;
+      align-content: center;
+      position: absolute;
+      top: 7.5cm;
+      left: 8.2cm;
+      outline:none;
+      border-style: solid;
+      padding: 0.5em 1.2em;
+    }
+  
+    
+    .guardar_descripcion:hover{
+      background-color:seashell;
+    }
+  
+  .num_punt{
+    border-radius: 20px;
+    border-style: solid;
+    font-weight:normal;
+    outline:none;
+    width:250px;
+    height:15px;
+    padding: 0.5em 1.2em;
+    resize:none;
+  }
+  }
