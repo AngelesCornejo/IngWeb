@@ -1,7 +1,7 @@
 .tit{
 	font-family: 'Pacifico', cursive;
 }
-/* Card "¿Qué comeré hoy?*/"
+/* Card "¿Qué comeré hoy?*/
 .demo-card-wide.mdl-card {
   width: auto;
 }
@@ -48,7 +48,7 @@
   background:
     url('../images/bgdessert.jpeg') center / cover #eeeded;
 }
-/* Card "Recetario*/"
+/* Card "Recetario*/
 .demo-card-wide2.mdl-card {
   width: auto;
 }

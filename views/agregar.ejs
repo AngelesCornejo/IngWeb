@@ -32,11 +32,11 @@
                   </div>
                   <div class=" form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt2">
           			       <label>Tiempo</label>
-  						 <input type="numeric" class="tpo" id="tiempo_rec" name="tiempo_rec" placeholder="Tiempo aproximado "> minutos
+  						 <input type="number" class="tpo" id="tiempo_rec" name="tiempo_rec" placeholder="Tiempo aproximado "> minutos
           			  </div>
                   <div class=" form-group col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt2">
                     <label>Nacionalidad</label>
-            <input type="numeric"  id="nac_rec" name="nac_rec" placeholder="Pais de origen">
+            <input type="text"  id="nac_rec" name="nac_rec" placeholder="Pais de origen" required  pattern="[a-zA-Z ]{2,254}">
                </div>
                   <!--Tooltip-->
   								<span class="mdl-tooltip mdl-tooltip--large" for="tt2">
@@ -62,9 +62,9 @@
   									Categoría a la que pertenece el platillo.
   								</span>
                   <div class="form-group col-lg-5 col-md-5 col-sm-5 col-xs-5" id="tt5">
-                       <input type="numeric" class="cal_rec" id="cal_rec" name="cal_rec" placeholder="n">
+                       <input type="number" class="cal_rec" id="cal_rec" name="cal_rec" placeholder="n">
           			       <label>calorias por</label>
-                       <input type="numeric" class="porc" id="porc_rec" name="porc_rec" placeholder="">     
+                       <input type="number" class="porc" id="porc_rec" name="porc_rec" placeholder="">     
                           <select class="select_inline" id="t_por" name="t_por">
 
           						        <optgroup label="Tipo de Porcion"></optgroup>
@@ -111,7 +111,7 @@
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tt8">
 										<label class="control-label col-lg-4">Selecciona la imagen</label>
 										<div class="col-lg-8">
-											<input type="file" class="file-styled" id="img" name="img">
+											<input type="file" class="file-styled" id="img" name="img" required>
 										</div>
 									</div>
                   <!--Tooltip-->
@@ -139,7 +139,7 @@
 
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="tt10">
                         <label>Cantidad</label>
-                        <input type="text"  class="form-control" placeholder="250" id="ct1" name="ct1" required></div>
+                        <input type="number"  class="form-control" placeholder="250" id="ct1" name="ct1" required></div>
                         <!--Tooltip-->
         								<span class="mdl-tooltip mdl-tooltip--large" for="tt10">
         									Cantidad necesaria para la elaboración del platillo.
@@ -170,7 +170,7 @@
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tt13">
                       <h4>Procedimiento</h4>
             					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            						<textarea rows="5" cols="5" class="form-control" placeholder="Default textarea" id="pas" name="pas" pattern=".{100,3000}"></textarea>
+            						<textarea rows="5" cols="5" class="form-control" placeholder="Colocar * para cada paso de la elaboración" id="pas" name="pas" pattern=".{100,3000}"></textarea>
             					</div>
             				</div>
                     <!--Tooltip-->
