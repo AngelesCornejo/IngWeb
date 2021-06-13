@@ -7,9 +7,11 @@ create table usuarios(id_user int NOT NULL AUTO_INCREMENT,
 nombre varchar(25),
 password varchar(120),
 email varchar(25),
-estrellas_prom double(3,2),
-npuntuaciones int,
+estrellas_prom double(3,2) default 2.5,
+npuntuaciones int default 0,
 descripcion varchar(100),
+pais varchar(50),
+genero varchar(10),
 primary key(id_user)
 );
 
@@ -34,6 +36,7 @@ nb_imagen_receta varchar(50),
 nomb_receta varchar(30),
 descripcion varchar (100),
 tiempo int,
+procedimiento varchar(500)
 nacionalidad varchar(30),
 calorias int,
 porcion_calorias int,
@@ -88,7 +91,3 @@ insert into recetas(nb_imagen_receta, nomb_receta, descripcion,tiempo,nacionalid
 values ("Pollo 1.png","Pollo asado","Un pollito bien asadito",15, "internacional",300,100,2,3),
  ("MexEgg.png","MexicanEgg","Un huevo a la mexicana",15, "Mexico",650,1,1,3);
 insert into req_rec values(4,1,0),(4,2,0);
-
-alter table usuarios add pais varchar(50);
-alter table usuarios add genero varchar(10);
-alter table recetas add procedimiento varchar(500);
