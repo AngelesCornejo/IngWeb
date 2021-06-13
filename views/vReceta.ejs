@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="../resources/css/estiloreceta.css">
     <link href="link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <script>
+      function calificar(){
+        document.getElementById("calific").submit();
+
+      }
+    </script>
 </head>
 <body>
     <style>
@@ -80,20 +86,23 @@
                       <%console.log(receta.descripcion.split("\n"))%>
 
                     <div class="wrapper">
-                        <form >
+                        <form action="../calificaRec" method="POST" id="calific" target="hidden-form">
+                          <input type="hidden" id="id_user" name="id_user" value=<%=idu%>>
+                          <input type="hidden" id="id_recetaac" name="id_recetaac" value=<%=receta.id_receta%>>
                           <p class="clasificacion">
-                            <input id="radio1" type="radio" class="stars1" onclick="calificar(this)" name="estrellas" value="5"><!--
+                            <input id="radio1" type="radio" class="stars1" onclick="calificar()" name="estrellas" value="5"><!--
                             --><label for="radio1" class="lab1">★</label><!--
-                            --><input id="radio2" type="radio" class="stars1" onclick="calificar(this)" name="estrellas" value="4"><!--
+                            --><input id="radio2" type="radio" class="stars1" onclick="calificar()" name="estrellas" value="4"><!--
                             --><label for="radio2" class="lab2">★</label><!--
-                            --><input id="radio3" type="radio"  class="stars1" onclick="calificar(this)" name="estrellas" value="3"><!--
+                            --><input id="radio3" type="radio"  class="stars1" onclick="calificar()" name="estrellas" value="3"><!--
                             --><label for="radio3" class="lab3">★</label><!--
-                            --><input id="radio4" type="radio" class="stars1" onclick="calificar(this)" name="estrellas" value="2"><!--
+                            --><input id="radio4" type="radio" class="stars1" onclick="calificar()" name="estrellas" value="2"><!--
                             --><label for="radio4" class="lab4">★</label><!--
-                            --><input id="radio5" type="radio" class="stars1" onclick="calificar(this)" name="estrellas" value="1"><!--
+                            --><input id="radio5" type="radio" class="stars1" onclick="calificar()" name="estrellas" value="1"><!--
                             --><label for="radio5" class="lab5">★</label>
                           </p>
                         </form>
+                        <iframe style="display:none" name="hidden-form"></iframe>
                       </div>
                 </div>
                 

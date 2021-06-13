@@ -312,7 +312,8 @@ app.get('/recetas/:id', function(req, res) {
                 logueado: logueado,
                 categoria: rows[0],
                 receta:rows[1],
-                ingredientes:rows[2]
+                ingredientes:rows[2],
+                idu:req.session.identifier,
             });
             }; 
         });
@@ -344,7 +345,32 @@ app.get('/agregaRec', (req, res) => {
         res.redirect("/login");
     }
 });
-
+app.post('/calificaRec', (req, res) => {
+    logueado = req.session.logueado;
+    console.log(req.body.id_user);
+    console.log(req.body.id_recetaac);
+    console.log(req.body.estrellas);
+    if (logueado) {
+        connection.query('SELECT estrellas_prom,npuntuaciones FROM usuarios where id_user='+req.body.id_user,[0,1,2], function(err, rows) {
+        if (err) {
+            console.log(err)
+            console.log("Listillo usando:")
+        }
+        else{
+            connection.query('UPDATE usuarios SET estrellas_prom = ? ,npuntuaciones = ? where id_user= ?', [((rows[0].estrellas_prom*rows[0].npuntuaciones)+(req.body.estrellas*(rows[0].npuntuaciones/3)))/(4*(rows[0].npuntuaciones/3)), rows[0].npuntuaciones+1,req.body.id_user], async (error, results) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                console.log("echo");
+                }
+            });
+        };
+        
+    });
+    } else {
+        res.redirect("/login");
+    }
+});
 app.post('/saveRec', (req, res) => {
     logueado = req.session.logueado;
 
