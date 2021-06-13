@@ -112,9 +112,11 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/AgregaDes', async (req, res) => {
+    logueado = req.session.logueado;
+    if(logueado){
     const descripcion = req.body.descripcion;
     const name = req.session.name;
-    logueado = req.session.logueado;
+    
     /*console.log(name);*/
     if (req.session.des == 1) {
         res.redirect('Perfil');
@@ -123,7 +125,7 @@ app.post('/AgregaDes', async (req, res) => {
             if (error) {
                 console.log(error);
             } else {
-                connection.query('SELECT descripcion FROM usuarios WHERE nombre = ?', [name], async (error, results) => {
+                connection.query('SELECT descripcion,estrellas_prom,npuntuaciones FROM usuarios WHERE nombre = ?', [name], async (error, results) => {
                     if (error) {
                         console.log(error);
                     } else {
@@ -133,22 +135,29 @@ app.post('/AgregaDes', async (req, res) => {
                         res.render('perfil', {
                             logueado: true,
                             name: req.session.name,
-                            descripcion: req.session.description
+                            descripcion: req.session.description,
+                            estrellas: results[0].estrellas_prom,
+                            npuntua:results[0].npuntuaciones
                         })
                     }
                 })
             }
         });
     }
+} else{
+    res.redirect('Login');
+}
 })
 
 app.post('/ConfigurarDatos', async (req, res) => {
+    logueado = req.session.logueado;
+    if(logueado){
     const name = req.body.name;
     const correo = req.body.correo;
     const pais = req.body.pais;
     const genero = req.body.genero;
     const ident = req.session.identifier;
-    logueado = req.session.logueado;
+    
     /*console.log(name);*/
     if (req.session.des == 1) {
         res.redirect('Perfil');
@@ -200,6 +209,9 @@ app.post('/ConfigurarDatos', async (req, res) => {
         });
 
     }
+} else {
+    res.redirect('Login');
+}
 })
 
 app.post('/auth', async (req, res) => {
