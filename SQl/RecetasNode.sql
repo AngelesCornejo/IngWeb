@@ -42,8 +42,10 @@ calorias int,
 porcion_calorias int,
 tipo_porcion int,
 id_categoria int not null,
+id_user int NOT NULL,
 primary key(id_receta),
-FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
+FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+FOREIGN KEY (id_user) REFERENCES usuarios(id_user)
 );
 
 create table req_especiales(
