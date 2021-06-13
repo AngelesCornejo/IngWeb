@@ -353,7 +353,8 @@ app.post('/saveRec', (req, res) => {
                 porcion_calorias:req.body.porc_rec,
                 tipo_porcion:req.body.t_por,
                 id_categoria:req.body.tip,
-                procedimiento: req.body.pas
+                procedimiento: req.body.pas,
+                id_user:req.session.identifier,
             }, async (error, results) => {
                 if (error)console.log(error);
                 //console.log(error)
