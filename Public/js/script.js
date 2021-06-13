@@ -1,7 +1,7 @@
 
 document.getElementById("btn_registrarse").addEventListener("click",register);
 document.getElementById("btn_iniciar_sesion").addEventListener("click",iniciarSesion);
-document.getElementById("btn_entrar").addEventListener("click",redireccionar);
+/*document.getElementById("btn_entrar").addEventListener("click",redireccionar);*/
 window.addEventListener("resize",anchopagina);
 
 var contenedor_login_register = document.querySelector(".contenedor__login_register");
@@ -10,9 +10,9 @@ var formulario_register = document.querySelector(".formulario__register");
 var cajaTraseraLogin= document.querySelector(".caja_trasera_login");
 var cajaTraseraRegister= document.querySelector(".caja_trasera_register");
 
-function redireccionar(){
+/*function redireccionar(){
     window.location.href="Blog/1";
-}
+}*/
 function anchopagina(){
     if(window.innerWidth>850){
         cajaTraseraLogin.style.display="block";
