@@ -69,7 +69,7 @@ FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
 FOREIGN KEY (id_ingr) REFERENCES ingredientes(id_ingr)
 );
 
-insert into categorias(categoria) values("Todos"),("Puerco"),("Pollo");
+insert into categorias(categoria) values("Postres"),("Bebidas"),("Carnes","Ensaladas","Sopas");
 
 
 insert into ingredientes(id_categoria, nomb_ing) values (1,"Zanahoria");

@@ -42,6 +42,8 @@
         <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C114.55,198.84 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: rgb(255, 255, 255);"></path></svg></div>
     </header>
     <main>
+      <%if (!logueado) {%>
+      
         <section class="contenedor recetas">
             <h1 class="titulo">Encuentra recetas para todos los gustos y compartenos tus creaciones</h1>
             <div class="contenedor-recetas">
@@ -54,6 +56,7 @@
                 </div>
             </div>
         </section>
+      <%}%>
         <section class="galeria">
             <div class="contenedor">
                 <h2 class="titulo">Últimas recetas</h2>
