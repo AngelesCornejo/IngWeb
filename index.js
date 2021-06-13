@@ -17,7 +17,7 @@ app.use('/resources', express.static(__dirname + '/Public'));
 
 app.set('view engine', 'ejs');
 
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 8080);
 
 const bcrypt = require('bcryptjs');
 
