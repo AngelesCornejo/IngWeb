@@ -17,7 +17,7 @@ app.use('/resources', express.static(__dirname + '/Public'));
 
 app.set('view engine', 'ejs');
 
-app.set('port', process.env.PORT || 5000);
+app.set('port', process.env.PORT || 80);
 
 const bcrypt = require('bcryptjs');
 
@@ -209,7 +209,7 @@ app.post('/auth', async (req, res) => {
 
     if (nombre && contrase) {
         connection.query('SELECT * FROM usuarios WHERE nombre = ?', [nombre], async (error, results) => {
-            if (results.length == 0 || !(await bcrypt.compare(contrase, results[0].password))) {
+            if (results == undefined || results.length == 0 || !(await bcrypt.compare(contrase, results[0].password))) {
                 // res.send('Usuario o password Incorrecto');
                 res.render('login', {
                     alert: true,
