@@ -11,7 +11,7 @@ var cajaTraseraLogin= document.querySelector(".caja_trasera_login");
 var cajaTraseraRegister= document.querySelector(".caja_trasera_register");
 
 function redireccionar(){
-    window.location.href="html/otro.html";
+    window.location.href="Blog/1";
 }
 function anchopagina(){
     if(window.innerWidth>850){
