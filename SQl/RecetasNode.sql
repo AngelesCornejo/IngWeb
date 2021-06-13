@@ -36,7 +36,7 @@ nb_imagen_receta varchar(50),
 nomb_receta varchar(30),
 descripcion varchar (100),
 tiempo int,
-procedimiento varchar(500)
+procedimiento varchar(500),
 nacionalidad varchar(30),
 calorias int,
 porcion_calorias int,
@@ -69,7 +69,7 @@ FOREIGN KEY (id_receta) REFERENCES recetas(id_receta),
 FOREIGN KEY (id_ingr) REFERENCES ingredientes(id_ingr)
 );
 
-insert into categorias(categoria) values("Postres"),("Bebidas"),("Carnes","Ensaladas","Sopas");
+insert into categorias(categoria) values("Postres"),("Bebidas"),("Carnes"),("Ensaladas"),("Sopas");
 
 
 insert into ingredientes(id_categoria, nomb_ing) values (1,"Zanahoria");
