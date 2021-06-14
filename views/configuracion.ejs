@@ -20,9 +20,9 @@
             Aqui puede ser configurada la cuenta. 
             <form action="/ConfigurarDatos" method="POST">
             <h3>Nombre de Usuario</h3>
-            <input type="text" class="datos" name="name" pattern="[a-zA-Z ]{2,254}" placeholder="<%= name %>">
+            <textarea type="text" class="datos" name="name" pattern="[a-zA-Z ]{2,254}"><%= name %></textarea>
             <h3>Correo</h3>
-            <input type="email" class="datos" name="correo" placeholder="<%= correo %>">
+            <textarea type="email" class="datos" name="correo"><%= correo %></textarea>
             <h3>Contraseña</h3>
             <textarea class="datos" name="contraseña" readonly>*********</textarea>
             <h3>País o Región</h3>
