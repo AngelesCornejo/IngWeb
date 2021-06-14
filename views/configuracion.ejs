@@ -23,7 +23,8 @@
             <h3>Nombre de Usuario</h3>
             <textarea type="text" onkeypress="return soloLetras(event)" class="datos" id="nom" name="name" required pattern="[a-zA-Z ]{2,254}"><%= name %></textarea>
             <h3>Correo</h3>
-            <textarea type="email" class="datos" id="email" name="correo"><%=correo %></textarea>
+            <textarea type="email" class="datos" id="email" name="correo" onkeyup="validarEmail(this)"><%=correo %></textarea>
+            <a id='resultado' class="validacion"></a>
             <h3>Contraseña</h3>
             <textarea class="datos" name="contraseña" readonly>*********</textarea>
             <h3>País o Región</h3>

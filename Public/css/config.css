@@ -166,7 +166,13 @@
 
 .gen:checked{
   background: black;
+
 }
+
+/*.validacion{
+  border: 0.2px solid gray;
+  padding: 3px;
+}*/
 
 
 }

@@ -25,3 +25,25 @@ function soloLetras(e) {
     }
   }
 
+  function validarEmail(elemento){
+
+    var texto = document.getElementById(elemento.id).value;
+    var regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    
+    if (!regex.test(texto)) {
+        document.getElementById("resultado").innerHTML = "Correo invalido, recuerde incluir un @ y .";
+        document.getElementById("resultado").style.display="block";
+        document.getElementById("resultado").style.border="0.2px solid gray";
+        document.getElementById("resultado").style.padding="3px";
+        document.getElementById("resultado").style.width="30%";
+        document.getElementById("resultado").style.textAlign="center";
+        document.getElementById("resultado").style.backgroundColor="#e5ffff"
+        document.getElementById("resultado").style.borderRadius="5px";
+
+    } else {
+      document.getElementById("resultado").innerHTML = "";
+      document.getElementById("resultado").style.display="none";
+      document.getElementById("resultado").style.border="none";
+    }
+  
+  }
