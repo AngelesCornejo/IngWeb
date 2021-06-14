@@ -286,11 +286,11 @@
                 <form method="POST" action="/CambContrase">
                 <h3>Cambio de Contraseña</h3>
                 <h4>Antigua Contraseña</h4>
-                <input type="password" class="datos" name="cont1">
+                <input type="password" class="datos" name="cont1" placeholder="Contraseña Anterior"  required minlength="8" maxlength="20">
                 <h4>Nueva Contraseña</h4>
-                <input type="password" class="datos" name="cont2">
+                <input type="password" class="datos" name="cont2" placeholder="Nueva Contraseña" required minlength="8" maxlength="20">
                 <h4>Confirmar Contraseña</h4>
-                <input type="password" class="datos" name="cont3">
+                <input type="password" class="datos" name="cont3" placeholder="Confirmar Contraseña" required minlength="8" maxlength="20">
                 <button class="nuevaCon">Guardar Contraseña nueva</button>
                 </form>
                 <button class="accordion1" type="button" onclick="cerrar();" >Cerrar</button>

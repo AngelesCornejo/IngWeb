@@ -166,6 +166,7 @@ app.post('/ConfigurarDatos', async (req, res) => {
         connection.query('UPDATE usuarios SET nombre = ?, email = ?, pais=?, genero = ? WHERE id_user = ?', [name, correo, pais, genero, ident], async (error, results) => {
             if (error) {
                 console.log(error);
+                res.redirect('Perfil');
             } else {
                 connection.query('SELECT nombre,email,pais,genero FROM usuarios WHERE id_user = ?', [ident], async (error, results) => {
                     if (error) {
@@ -522,6 +523,7 @@ app.post('/CambContrase',async (req,res)=>{
           connection.query('UPDATE usuarios SET password = ? WHERE id_user =?',[passHaash,identifier],async(error,results)=>{
            if(error){
              console.log(error);
+             res.redirect('/Perfil');
            }else{
             console.log("Cambio de contraseñas listo!");
             req.session.destroy();
